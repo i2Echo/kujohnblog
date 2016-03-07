@@ -1,5 +1,5 @@
 ﻿# ignore packages install by npm 
-node_modules
+*/node_modules
 
 # ignore webstrom .idea 
 .idea
