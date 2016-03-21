@@ -1,8 +1,73 @@
 doctype html
 html
   head
+    meta(name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    link(rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css")
+
   body
-    block header
-    block content
+    header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-navbar')
+              span.sr-only Toggle Navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand#logo-img(href='#')
+              img.img-circle(width='40', height='40', src='/images/logo.png')
+          .collapse.navbar-collapse#bs-navbar
+            ul.nav.navbar-nav.text-center
+              li.active
+                a(href='#') Home
+              li
+                a(href='#') Archives
+              li
+                a(href='#') About
+            .nav.navbar-nav.navbar-right.text-center#user
+                button.btn.btn-default.navbar-btn#login-btn(type='button') sign in
+                button.btn.btn-success.navbar-btn#reg-btn(type='button') sign up
+    .head-img
+      img.fixed-bg(src='/images/bg.jpg')
+    .main.container-fluid
+      .container
+        .row
+          .col-sm-8.col-sm-offset-1.blog-main
+            block content
+          .col-sm-3.page-sidebar
+            button.btn.btn-default.btn-block#atom RSS订阅
+            .panel.panel-default
+              .panel-heading Archives
+              ul.list-group
+                li.list-group-item
+                  a(href='#') time1
+                li.list-group-item
+                  a(href='#') time2
+                li.list-group-item
+                  a(href='#') time3
+            .panel.panel-default
+              .panel-heading Hot tag
+              .panel-body
+                - var tags = {'node': 'default','html5': 'primary','css3': 'success','bootstrap': 'info','express': 'danger'}
+                each val,key in tags
+                  a.btn.tag(class='btn-#{val}', href='#{key}') #{key}
+            .panel.panel-default
+              .panel-heading Link
+              ul.list-group
+                li.list-group-item
+                  a(href='https://github.com') Github
+                li.list-group-item
+                  a(href='https://www.imooc.com') Imooc
+                li.list-group-item
+                  a(href='https://http://getbootstrap.com') Bootstrap
+
+      footer.bs-footer.pull-left
+        p.copyright.text-center Powered by <a id='author' href='#'>echo</a> &copy;2016
+
+         
+    script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
+    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+    script(type='text/javascript', src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js")

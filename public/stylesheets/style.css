@@ -1,8 +1,68 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  padding: 50px;
+  padding-top: 250px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+a#logo-img{
+  padding: 5px 15px;
+  margin-right: 40px;
+}
+
+.head-img{
+  width: 100%;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  left: 0;
+}
+img.fixed-bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+#user{
+  padding: 0 20px;
+}
+#user button{
+  margin-right: 5px;
+}
+
+.main{
+  background-color: #fff;
+  padding-top: 20px;
+}
+
+.page-sidebar button#atom{
+  margin-bottom: 20px;
+}
+.page-sidebar a.tag{
+  margin: 5px;
+}
+.bs-footer{
+  width: 100%;
+  margin: 30px auto;
 }
