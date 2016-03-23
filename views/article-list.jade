@@ -1,0 +1,44 @@
+- for (var i=0; i<10; i++){
+.content-box.container-fluid
+  .box-title
+    a.h3(href='#') Bring International Day of Happiness in-house
+  .discrible
+    span
+      i.fa.fa-user
+      a.author.h5(href='#') ECHO
+    span.post-time.pull-right
+      i.fa.fa-clock-o
+      | 2016-03-18
+  .box-body
+
+    p.text-indent Sunday March 20 is the International Day of Happiness. Celebrate by considering how the research on positive psychology can help your organization, and commit to at least one act of happiness.
+    a#more(href='#') READ MORE
+  .box-foot.row
+    .archive.col-sm-2
+      i.fa.fa-folder
+      span python
+    .tag.col-sm-8
+      i.fa.fa-tags
+      span tags
+    .col-sm-2
+      i.fa.fa-comments
+      span 2
+      i.fa.fa-star-o
+      span 6
+- }
+nav.text-center
+  ul.pagination
+    li.disabled
+      a(href='#', aria-label="Previous")
+        span(aria-hidden="true") &laquo;
+    li.active
+      a(href='#') 1
+        span.sr-only
+    - for (var i=2; i<6; i++){
+    li
+      a(href='#') #{i}
+        span.sr-only
+    - }
+    li
+      a(href='#', aria-label="Next")
+        span(aria-hidden="true") &raquo;

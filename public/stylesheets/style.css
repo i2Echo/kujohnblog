@@ -4,24 +4,19 @@
 }
 
 body {
-  padding-top: 250px;
+  padding-top: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+ul, ol{
+  list-style: none;
+}
 a {
   color: #00B7FF;
 }
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
+i.fa{
+  margin: 0 5px;
+  color: #afafaf;
 }
-* html .clearfix             { zoom: 1; } /* IE6 */
-*:first-child+html .clearfix { zoom: 1; } /* IE7 */
-
 
 a#logo-img{
   padding: 5px 15px;
@@ -44,6 +39,7 @@ img.fixed-bg{
   left: 0;
   z-index: -1;
 }
+
 #user{
   padding: 0 20px;
 }
@@ -52,17 +48,103 @@ img.fixed-bg{
 }
 
 .main{
-  background-color: #fff;
+  background-color: #f2f2f3;
   padding-top: 20px;
 }
 
-.page-sidebar button#atom{
-  margin-bottom: 20px;
+/*content*/
+.text-indent{
+  text-indent: 2em;
 }
+.content-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 30px auto;
+  padding-top: 15px;
+  background-color: #fff;
+}
+.content-box:hover{
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  -moz-box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  border-radius: 2px;
+}
+.box-title{
+  line-height: 3em;
+}
+
+.discrible span{
+  margin-right: 10px;
+  line-height: 20px;
+}
+.discrible .author{
+  font-weight: 700;
+  /*display: inline-block;*/
+  /*max-width: 150px;*/
+  /*overflow: hidden;*/
+  /*white-space: nowrap;*/
+  /*text-overflow: ellipsis;*/
+  /*-o-text-overflow: ellipsis;*/
+}
+
+.box-body{
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+.box-body a#more{
+  font-weight: 700;
+}
+.box-foot{
+  margin: 10px auto;
+}
+
+/*sidebar*/
+.page-sidebar a#atom{
+  margin: 30px auto 20px;
+  background-color: #2d2d2d;
+  border-radius: 2px;
+  color: #fff;
+}
+.page-sidebar a#atom:hover{
+  margin: 30px auto 20px;
+  background-color: #000;
+  border-radius: 2px;
+}
+.page-sidebar .side-box{
+  background-color: #fff;
+  margin: 20px auto;
+}
+.side-box .side-box-body{
+  margin: 15px auto;
+}
+.side-box ul.side-box-body li{
+  border-bottom: 1px solid #ccc;
+  line-height: 30px;
+  /*font-size: 16px;*/
+  padding-left: 15px;
+}
+
 .page-sidebar a.tag{
   margin: 5px;
+  display: inline-block;
 }
+
+/*footer*/
 .bs-footer{
   width: 100%;
   margin: 30px auto;
+}
+
+#totop{
+  position: fixed;
+  bottom: 5em;
+  right: 1em;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1024px){
+  #totop {
+    display: none !important;
+  }
 }

@@ -1,11 +1,7 @@
 extends layout
 
 block content
-  - for (var i=0; i<10; i++){
-  .panel.panel-info
-    .panel-heading Title1
-    .panel-body
-      p hahahhaa
-      p hahahha
-      p hahahhahaha
-  - }
+  include article-list
+
+block sidebar
+  include sidebar

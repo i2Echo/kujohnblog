@@ -58,7 +58,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-// var debug = require('debug')('my-application');
-// var server = app.listen(app.get('port'),function(){
-//   debug('Express server listening on port' + server.address().port);
-// });
+

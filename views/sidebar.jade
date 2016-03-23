@@ -1,0 +1,28 @@
+a.btn.btn-block#atom
+  i.fa.fa-rss
+  | RSS订阅
+.side-box.container-fluid
+  .side-box-title.h4 Archives
+  ul.side-box-body
+    li
+      a(href='#') time1
+    li
+      a(href='#') time2
+    li
+      a(href='#') time3
+
+.side-box.container-fluid
+  .side-box-title.h4 Hot tags
+  .side-box-body
+    - var tags = {'node': 'default','html5': 'primary','css3': 'success','bootstrap': 'info','express': 'danger'}
+    each val,key in tags
+      a.label.tag(class='label-#{val}', href='#') #{key}
+.side-box.container-fluid
+  .side-box-title.h4 Link
+  ul.side-box-body
+    li
+      a(href='https://github.com', target='_blank') Github
+    li
+      a(href='https://www.imooc.com', target='_blank') Imooc
+    li
+      a(href='https://http://getbootstrap.com', target='_blank') Bootstrap
