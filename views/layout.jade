@@ -8,27 +8,49 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
   body
+    form#login.layer-hide.container-fluid
+      .form-group
+        label(for='inputEmail') Email address
+        input.form-control#inputEmail(type='email',placeholder='Email')
+      .form-group
+        label(for='inputPassword') Password
+        input.form-control#inputPassword(type='password',placeholder='Password')
+      button.btn.btn-success.btn-block(type='submit') Login
+
+    form#reg.layer-hide.container-fluid
+      .form-group
+        label(for='regEmail') Email address
+        input.form-control#regEmail(type='email',placeholder='Email')
+      .form-group
+        label(for='regPassword') Password
+        input.form-control#regPassword(type='password',placeholder='Password')
+      .form-group
+        label(for='confirmPassword') Confirm your password
+        input.form-control#confirmPassword(type='password',placeholder='Password')
+      button.btn.btn-success.btn-block(type='submit') Sign up
+
     header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-        .container-fluid
-          .navbar-header
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-navbar')
-              span.sr-only Toggle Navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.navbar-brand#logo-img(href='#')
-              img.img-circle(width='40', height='40', src='/images/logo.png')
-          .collapse.navbar-collapse#bs-navbar
-            ul.nav.navbar-nav.text-center
-              li.active
-                a(href='#') Home
-              li
-                a(href='#') Archives
-              li
-                a(href='#') About
-            .nav.navbar-nav.navbar-right.text-center#user
-                button.btn.btn-default.navbar-btn#login-btn(type='button') sign in
-                button.btn.btn-success.navbar-btn#reg-btn(type='button') sign up
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-navbar')
+            span.sr-only Toggle Navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand#logo-img(href='#')
+            img.img-circle(width='40', height='40', src='/images/logo.png')
+        .collapse.navbar-collapse#bs-navbar
+          ul.nav.navbar-nav.text-center
+            li.active
+              a(href='#') Home
+            li
+              a(href='#') Archives
+            li
+              a(href='#') About
+          .nav.navbar-nav.navbar-right.text-center#user
+              button.btn.btn-default.navbar-btn#login-btn(type='button') Sign in
+              button.btn.btn-success.navbar-btn#reg-btn(type='button') Sign up
+
     .head-img
       img.fixed-bg(src='/images/bg.jpg')
     .main.container-fluid
@@ -47,3 +69,5 @@ html
     script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
     script(type='text/javascript', src='/javascripts/bootstrap.min.js')
     script(type='text/javascript', src='/javascripts/totop.js')
+    script(type='text/javascript', src='/plugins/layer/layer.js')
+    script(type='text/javascript', src='/javascripts/login-reg.js')

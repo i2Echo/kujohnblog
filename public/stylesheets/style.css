@@ -39,14 +39,20 @@ img.fixed-bg{
   left: 0;
   z-index: -1;
 }
-
+/*user login*/
 #user{
   padding: 0 20px;
 }
 #user button{
   margin-right: 5px;
 }
-
+#login,#reg{
+  margin: 30px 10px 50px;
+  min-width: 300px;
+}
+.layer-hide{
+  display: none;
+}
 .main{
   background-color: #f2f2f3;
   padding-top: 20px;
@@ -64,6 +70,7 @@ img.fixed-bg{
   padding-top: 15px;
   background-color: #fff;
 }
+.side-box:hover,
 .content-box:hover{
   -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.4);
   -moz-box-shadow: 0 4px 8px rgba(0,0,0,.4);
