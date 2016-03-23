@@ -8,26 +8,39 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
   body
-    form#login.layer-hide.container-fluid
-      .form-group
-        label(for='inputEmail') Email address
-        input.form-control#inputEmail(type='email',placeholder='Email')
-      .form-group
-        label(for='inputPassword') Password
-        input.form-control#inputPassword(type='password',placeholder='Password')
-      button.btn.btn-success.btn-block(type='submit') Login
-
-    form#reg.layer-hide.container-fluid
-      .form-group
-        label(for='regEmail') Email address
-        input.form-control#regEmail(type='email',placeholder='Email')
-      .form-group
-        label(for='regPassword') Password
-        input.form-control#regPassword(type='password',placeholder='Password')
-      .form-group
-        label(for='confirmPassword') Confirm your password
-        input.form-control#confirmPassword(type='password',placeholder='Password')
-      button.btn.btn-success.btn-block(type='submit') Sign up
+    #login.modal.fade(tabindex='-1',role='dialog',aria-labelledby="loginModalLabel",aria-hidden="true")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type="button", data-dismiss="modal",aria-hidden="true")
+              span.fa.fa-close
+            h3.modal-title#loginModalLabel Login
+          form.modal-body
+            .form-group
+              label(for='inputEmail') Email address
+              input.form-control#inputEmail(type='email',placeholder='Email')
+            .form-group
+              label(for='inputPassword') Password
+              input.form-control#inputPassword(type='password',placeholder='Password')
+            button.btn.btn-success.btn-block(type='submit') Login
+    #reg.modal.fade(tabindex='-1',role='dialog',aria-labelledby="regModalLabel",aria-hidden="true")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type="button", data-dismiss="modal",aria-hidden="true")
+              span.fa.fa-close
+            h3.modal-title#regModalLabel Register
+          form.modal-body
+            .form-group
+              label(for='regEmail') Email address
+              input.form-control#regEmail(type='email',placeholder='Email')
+            .form-group
+              label(for='regPassword') Password
+              input.form-control#regPassword(type='password',placeholder='Password')
+            .form-group
+              label(for='confirmPassword') Confirm your password
+              input.form-control#confirmPassword(type='password',placeholder='Password')
+            button.btn.btn-success.btn-block(type='submit') Sign up
 
     header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
       .container-fluid
@@ -48,8 +61,8 @@ html
             li
               a(href='#') About
           .nav.navbar-nav.navbar-right.text-center#user
-              button.btn.btn-default.navbar-btn#login-btn(type='button') Sign in
-              button.btn.btn-success.navbar-btn#reg-btn(type='button') Sign up
+              button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login') Sign in
+              button.btn.btn-success.navbar-btn#reg-btn(type='button',data-toggle='modal',data-target='#reg') Sign up
 
     .head-img
       img.fixed-bg(src='/images/bg.jpg')
@@ -69,5 +82,3 @@ html
     script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
     script(type='text/javascript', src='/javascripts/bootstrap.min.js')
     script(type='text/javascript', src='/javascripts/totop.js')
-    script(type='text/javascript', src='/plugins/layer/layer.js')
-    script(type='text/javascript', src='/javascripts/login-reg.js')

@@ -47,12 +47,17 @@ img.fixed-bg{
   margin-right: 5px;
 }
 #login,#reg{
-  margin: 30px 10px 50px;
-  min-width: 300px;
+  margin-top: 100px;
 }
-.layer-hide{
-  display: none;
+.modal-content{
+  max-width: 450px;
+  margin: 0 auto;
 }
+form.modal-body{
+  margin-bottom: 20px;
+}
+
+
 .main{
   background-color: #f2f2f3;
   padding-top: 20px;
