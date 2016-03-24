@@ -3,33 +3,63 @@ extends layout
 block content
   include article-list
   .container-fluid.write-article
-    h3 写文章
     form.article-form(role='form')
+      //.form-group
+      //  label(for='formTitle') Title
+      //  .input-group#formTitle
+      //    .input-group-btn
+      //      button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") select
+      //        span.caret
+      //      ul.dropdown-menu
+      //        li
+      //          a(href='#') yuanchuang
+      //        li
+      //          a(href='#') yuanchuang
+      //        li
+      //          a(href='#') yuanchuang
+      //    input.form-control(type='text')
       .form-group
-        label(for='formTitle') Title
-        .input-group#formTitle
-          .input-group-btn
-            button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") select
-              span.caret
-            ul.dropdown-menu
-              li
-                a(href='#') yuanchuang
-              li
-                a(href='#') yuanchuang
-              li
-                a(href='#') yuanchuang
-          input.form-control(type='text')
-      .form-group
-        label(for='summernote') Content
-        #summernote
+        h2.article-title Write article
+        label(for='myEditor') Markdown editor
+        #myEditor
+        button.btn.btn-success.post-btn.btn-block(type='submit') Post your article
 
 block sidebar
-  .side-box.container-fluid
-    .side-box-title.h4 echo
-    ul.side-box-body
-      li
-        a(href='#') time1
-      li
-        a(href='#') time2
-      li
-        a(href='#') time3
+  .side-box.container-fluid#profile-box
+    .profile-box-title.h4 Profile
+    .profile-box-body
+      .profile-logo.text-center
+        a(href='#')
+          img.img-circle(width='100', height='100', src='/images/logo.png')
+      .profile-info
+        h4
+        strong kujohn
+        p
+         i.fa.fa-map-marker
+         | china
+        h5
+          strong About
+        p a student of the CCNU
+        .row.text-center
+          .col-sm-4
+            i.fa.fa-file
+            a(href='#')
+              span 66
+              | Articles
+          .col-sm-4
+            i.fa.fa-heart
+            a(href='#')
+              span 7
+              | Following
+          .col-sm-4
+            i.fa.fa-user
+            a(href='#')
+              span 34
+              | Followers
+
+        button.btn.btn-success.oprate
+          i.fa.fa-envelope
+          | message
+        button.btn.btn-success
+          i.fa.fa-user-plus
+          | following

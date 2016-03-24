@@ -1,13 +1,15 @@
 doctype html
 html
   head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
-    link(rel='stylesheet', href='/plugins/summernote/summernote.css')
+    link(rel='stylesheet', href='/plugins/markdownEditor/bootstrap-markdown-editor.css')
 
     <!--[if IE]>
     <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
@@ -86,13 +88,22 @@ html
         img(src='/images/scrollup.png')
 
     //script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
-    script(type='text/javascript', src='//cdn.bootcss.com/jquery/2.2.0/jquery.min.js')
+    script(type='text/javascript', src='//cdn.bootcss.com/jquery/2.1.1/jquery.min.js')
+    script.
+      window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')
     script(type='text/javascript', src='/javascripts/bootstrap.min.js')
     script(type='text/javascript', src='/javascripts/totop.js')
-    script(type='text/javascript', src='/plugins/summernote/summernote.min.js')
+
+    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js')
+    //script(type='text/javascript', src='/plugins/markdownEditor/ace.js')
+    script(type='text/javascript', src='/plugins/markdownEditor/marked.min.js')
+    script(type='text/javascript', src='/plugins/markdownEditor/bootstrap-markdown-editor.js')
     script.
-      $(document).ready(function () {
-        $('#summernote').summernote({
-          height: 200
-          });
+      $(document).ready(function(){
+        $('#myEditor').markdownEditor({
+          preview: true,
+          onPreview: function (content, callback) {
+            callback(marked(content));
+          }
+        });
       });

@@ -11,6 +11,9 @@ body {
 a {
   color: #00B7FF;
 }
+.md-btn{
+  margin: 5px auto;
+}
 
 a#logo-img{
   padding: 5px 15px;
@@ -93,6 +96,8 @@ form.modal-body{
   /*text-overflow: ellipsis;*/
   /*-o-text-overflow: ellipsis;*/
 }
+
+.profile-box-body i.fa,
 .content-box i.fa{
   margin: 0 5px;
   color: #747474;
@@ -110,6 +115,14 @@ form.modal-body{
 }
 .write-article{
   background-color: #fff;
+  margin-top: 50px;
+}
+.write-article .post-btn{
+  margin: 15px auto;
+  max-width: 300px;
+}
+.write-article .article-title{
+  border-bottom: 1px solid #ccc;
 }
 
 /*sidebar*/
@@ -140,16 +153,26 @@ form.modal-body{
   /*font-size: 16px;*/
   padding-left: 15px;
 }
-
 .page-sidebar a.tag{
   margin: 5px;
   display: inline-block;
+}
+#profile-box{
+  margin-top: 30px;
+}
+#profile-box .profile-box-title{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+#profile-box button{
+  margin: 20px auto;
+  color: #fff;
 }
 
 /*footer*/
 .bs-footer{
   width: 100%;
-  margin: 30px auto;
+  margin: 50px auto;
 }
 
 #totop{
