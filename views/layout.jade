@@ -7,6 +7,12 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/plugins/summernote/summernote.css')
+
+    <!--[if IE]>
+    <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+
   body
     #login.modal.fade(tabindex='-1',role='dialog',aria-labelledby="loginModalLabel",aria-hidden="true")
       .modal-dialog
@@ -79,6 +85,14 @@ html
       a(title="返回顶部")
         img(src='/images/scrollup.png')
 
-    script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
+    //script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
+    script(type='text/javascript', src='//cdn.bootcss.com/jquery/2.2.0/jquery.min.js')
     script(type='text/javascript', src='/javascripts/bootstrap.min.js')
     script(type='text/javascript', src='/javascripts/totop.js')
+    script(type='text/javascript', src='/plugins/summernote/summernote.min.js')
+    script.
+      $(document).ready(function () {
+        $('#summernote').summernote({
+          height: 200
+          });
+      });

@@ -7,15 +7,9 @@ body {
   padding-top: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-ul, ol{
-  list-style: none;
-}
+
 a {
   color: #00B7FF;
-}
-i.fa{
-  margin: 0 5px;
-  color: #afafaf;
 }
 
 a#logo-img{
@@ -99,7 +93,10 @@ form.modal-body{
   /*text-overflow: ellipsis;*/
   /*-o-text-overflow: ellipsis;*/
 }
-
+.content-box i.fa{
+  margin: 0 5px;
+  color: #747474;
+}
 .box-body{
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
@@ -111,6 +108,9 @@ form.modal-body{
 .box-foot{
   margin: 10px auto;
 }
+.write-article{
+  background-color: #fff;
+}
 
 /*sidebar*/
 .page-sidebar a#atom{
@@ -118,6 +118,9 @@ form.modal-body{
   background-color: #2d2d2d;
   border-radius: 2px;
   color: #fff;
+}
+.page-sidebar ul{
+  list-style: none;
 }
 .page-sidebar a#atom:hover{
   margin: 30px auto 20px;

@@ -2,9 +2,30 @@ extends layout
 
 block content
   include article-list
+  .container-fluid.write-article
+    h3 写文章
+    form.article-form(role='form')
+      .form-group
+        label(for='formTitle') Title
+        .input-group#formTitle
+          .input-group-btn
+            button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown",aria-haspopup="true",aria-expanded="false") select
+              span.caret
+            ul.dropdown-menu
+              li
+                a(href='#') yuanchuang
+              li
+                a(href='#') yuanchuang
+              li
+                a(href='#') yuanchuang
+          input.form-control(type='text')
+      .form-group
+        label(for='summernote') Content
+        #summernote
+
 block sidebar
   .side-box.container-fluid
-    .side-box-title.h4 Archives
+    .side-box-title.h4 echo
     ul.side-box-body
       li
         a(href='#') time1
