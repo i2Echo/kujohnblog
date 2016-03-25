@@ -40,26 +40,26 @@ block sidebar
         h5
           strong About
         p a student of the CCNU
-        .row.text-center
+        .row.container-fluid
           .col-sm-4
             i.fa.fa-file
             a(href='#')
-              span 66
+              strong 66
               | Articles
           .col-sm-4
             i.fa.fa-heart
             a(href='#')
-              span 7
+              strong 7
               | Following
           .col-sm-4
             i.fa.fa-user
             a(href='#')
-              span 34
+              strong 34
               | Followers
-
-        button.btn.btn-success.oprate
-          i.fa.fa-envelope
-          | message
-        button.btn.btn-success
-          i.fa.fa-user-plus
-          | following
+        .user-btn.row.text-center
+          button.btn.btn-success
+            span.fa.fa-envelope
+            | message
+          button.btn.btn-success
+            span.fa.fa-user-plus
+            | following

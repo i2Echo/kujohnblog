@@ -164,8 +164,8 @@ form.modal-body{
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }
-#profile-box button{
-  margin: 20px auto;
+#profile-box .user-btn button{
+  margin: 10px 5px;
   color: #fff;
 }
 
