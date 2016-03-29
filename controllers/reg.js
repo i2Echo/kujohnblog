@@ -4,7 +4,7 @@ var crypto = require('crypto');
 var regGet = function(req, res){
   res.render('signup', {
     title: 'Sign up',
-    //user: req.session.user,
+    user: req.session.user,
     success: req.flash('success').toString(),
     error: req.flash('error').toString()
   });
@@ -14,8 +14,12 @@ var regPost = function(req, res){
   var name = req.body.name,
       apassword = req.body.password,
       password_re = req.body['password-repeat'];
+  if (!name||!apassword||!password_re){
+    req.flash('error','Please input all fields');
+    return res.redirect('/signup');
+  }
   if (apassword != password_re){
-    req.flash('error','password isnt same');
+    req.flash('error','Confirmation password is not identical!');
     return res.redirect('/signup');
   }
   var md5 = crypto.createHash('md5'),
@@ -31,7 +35,7 @@ var regPost = function(req, res){
       return res.redirect('/')
     }
     if(user){
-      req.flash('error', 'user aleardy exiters');
+      req.flash('error', 'Username already exists');
       return res.redirect('/signup');
     }
 
@@ -40,7 +44,6 @@ var regPost = function(req, res){
         req.flash('error', err);
         return res.redirect('/signup')
       }
-      console.log(req.body);
       req.session.user = newUser;
       req.flash('success', 'user be created!');
       res.redirect('/');

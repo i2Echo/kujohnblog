@@ -30,9 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-
-
 //session
 app.use(session({
   secret: settings.cookieSecret,
@@ -49,7 +46,7 @@ app.use(session({
 }));
 
 app.use(flash());
-
+app.use('/', routes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

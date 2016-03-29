@@ -70,12 +70,19 @@ html
               a(href='#') Archives
             li
               a(href='#') About
-            li
-              if success
-                div.flash-message #{success}
           .nav.navbar-nav.navbar-right.text-center#user
-              button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login') Sign in
+              button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login')
+                span Sign in
               button.btn.btn-success.navbar-btn#reg-btn(type='button',data-toggle='modal',data-target='#reg') Sign up
+
+      if success
+        .alert.alert-success#myAlert
+          a.close(data-dismiss="alert") &times;
+          strong #{success}
+      if error
+        .alert.alert-danger#myAlert
+          a.close(data-dismiss="alert") &times;
+          strong #{error}
 
     .head-img
       img.fixed-bg(src='/images/bg.jpg')
@@ -110,5 +117,8 @@ html
           onPreview: function (content, callback) {
             callback(marked(content));
           }
+        });
+        $(".close").click(function () {
+          $("#myAlert").alert();
         });
       });
