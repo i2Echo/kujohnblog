@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .ubox
+    form(method='post',action='/signin')
+      .modal-header
+        h3.modal-title Login
+      .modal-body
+        .form-group
+          label(for='inputUsername') Username
+          input.form-control#inputUsername(type='text',placeholder='Username',name="user[username]")
+        .form-group
+          label(for='inputPassword') Password
+          input.form-control#inputPassword(type='password',placeholder='Password',name="user[password]")
+        button.btn.btn-success.btn-block(type='submit') Login

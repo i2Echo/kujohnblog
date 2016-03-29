@@ -4,12 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var settings = require('./settings');
+
+
+var mongoose = require('mongoose');
+mongoose.connect(settings.dbUrl);
 
 var app = express();
 
+app.set('port', process.env.PORT ||3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -23,7 +31,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+
+
+//session
+app.use(session({
+  secret: settings.cookieSecret,
+  key: settings.db,
+  cookie: {maxAge: 1000*60*60*24},//1day
+  store: new MongoStore({
+    //db: settings.db,
+    //host: settings.host,
+    //port: settings.port
+    url: settings.dbUrl
+  }),
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(flash());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,6 +81,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.listen(app.get('port'), function () {
+  console.log('Express server listening on port:' + app.get('port'));
+});
 
 module.exports = app;
 

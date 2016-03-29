@@ -46,7 +46,7 @@ img.fixed-bg{
 #login,#reg{
   margin-top: 100px;
 }
-.modal-content{
+.ubox{
   max-width: 450px;
   margin: 0 auto;
 }

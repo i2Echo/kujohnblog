@@ -18,37 +18,39 @@ html
   body
     #login.modal.fade(tabindex='-1',role='dialog',aria-labelledby="loginModalLabel",aria-hidden="true")
       .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type="button", data-dismiss="modal",aria-hidden="true")
-              span.fa.fa-close
-            h3.modal-title#loginModalLabel Login
-          form.modal-body
-            .form-group
-              label(for='inputEmail') Email address
-              input.form-control#inputEmail(type='email',placeholder='Email')
-            .form-group
-              label(for='inputPassword') Password
-              input.form-control#inputPassword(type='password',placeholder='Password')
-            button.btn.btn-success.btn-block(type='submit') Login
+        .modal-content.ubox
+          form(method='post',action='/signin')
+            .modal-header
+              button.close(type="button", data-dismiss="modal",aria-hidden="true")
+                span.fa.fa-close
+              h3.modal-title#loginModalLabel Login
+            .modal-body
+              .form-group
+                label(for='inputUsername') Username
+                input.form-control#inputUsername(type='text',placeholder='Username',name="name")
+              .form-group
+                label(for='inputPassword') Password
+                input.form-control#inputPassword(type='password',placeholder='Password',name="password")
+              button.btn.btn-success.btn-block(type='submit') Login
     #reg.modal.fade(tabindex='-1',role='dialog',aria-labelledby="regModalLabel",aria-hidden="true")
       .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type="button", data-dismiss="modal",aria-hidden="true")
-              span.fa.fa-close
-            h3.modal-title#regModalLabel Register
-          form.modal-body
-            .form-group
-              label(for='regEmail') Email address
-              input.form-control#regEmail(type='email',placeholder='Email')
-            .form-group
-              label(for='regPassword') Password
-              input.form-control#regPassword(type='password',placeholder='Password')
-            .form-group
-              label(for='confirmPassword') Confirm your password
-              input.form-control#confirmPassword(type='password',placeholder='Password')
-            button.btn.btn-success.btn-block(type='submit') Sign up
+        .modal-content.ubox
+          form(method='post',action='/signup')
+            .modal-header
+              button.close(type="button", data-dismiss="modal",aria-hidden="true")
+                span.fa.fa-close
+              h3.modal-title#regModalLabel Register
+            .modal-body
+              .form-group
+                label(for='regUsername') Username
+                input.form-control#regUsername(type='text',placeholder='Username',name="name")
+              .form-group
+                label(for='regPassword') Password
+                input.form-control#regPassword(type='password',placeholder='Password',name="password")
+              .form-group
+                label(for='confirmPassword') Confirm your password
+                input.form-control#confirmPassword(type='password',placeholder='Password',name="password-repeat")
+              button.btn.btn-success.btn-block(type='submit') Sign up
 
     header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
       .container-fluid
@@ -68,6 +70,9 @@ html
               a(href='#') Archives
             li
               a(href='#') About
+            li
+              if success
+                div.flash-message #{success}
           .nav.navbar-nav.navbar-right.text-center#user
               button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login') Sign in
               button.btn.btn-success.navbar-btn#reg-btn(type='button',data-toggle='modal',data-target='#reg') Sign up
