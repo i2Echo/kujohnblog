@@ -1,7 +1,7 @@
 function checkLogin(req, res, next) {
   if (!req.session.user) {
     req.flash('info', 'notLogin');
-    res.redirect('/login');
+    res.redirect('/signin');
   }
   if (req.session.user) {
     req.flash('info', 'isLogin');
@@ -10,6 +10,4 @@ function checkLogin(req, res, next) {
   next();
 }
 
-module.exports = {
-  checkLogin: checkLogin
-};
+module.exports = checkLogin;

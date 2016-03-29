@@ -40,13 +40,15 @@ img.fixed-bg{
 #user{
   padding: 0 20px;
 }
-#user button{
+#user .btn{
+  width: 80px;
   margin-right: 5px;
 }
+
 #login,#reg{
   margin-top: 100px;
 }
-.ubox{
+.sign-box{
   max-width: 450px;
   margin: 0 auto;
 }

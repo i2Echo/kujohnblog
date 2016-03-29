@@ -18,7 +18,7 @@ html
   body
     #login.modal.fade(tabindex='-1',role='dialog',aria-labelledby="loginModalLabel",aria-hidden="true")
       .modal-dialog
-        .modal-content.ubox
+        .modal-content.sign-box
           form(method='post',action='/signin')
             .modal-header
               button.close(type="button", data-dismiss="modal",aria-hidden="true")
@@ -34,7 +34,7 @@ html
               button.btn.btn-success.btn-block(type='submit') Login
     #reg.modal.fade(tabindex='-1',role='dialog',aria-labelledby="regModalLabel",aria-hidden="true")
       .modal-dialog
-        .modal-content.ubox
+        .modal-content.sign-box
           form(method='post',action='/signup')
             .modal-header
               button.close(type="button", data-dismiss="modal",aria-hidden="true")
@@ -65,16 +65,19 @@ html
         .collapse.navbar-collapse#bs-navbar
           ul.nav.navbar-nav.text-center
             li.active
-              a(href='#') Home
+              a(href='/') Home
             li
               a(href='#') Archives
             li
               a(href='#') About
           .nav.navbar-nav.navbar-right.text-center#user
-              button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login')
-                span Sign in
-              button.btn.btn-success.navbar-btn#reg-btn(type='button',data-toggle='modal',data-target='#reg') Sign up
-
+            if !user
+                button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login') Sign in
+                button.btn.btn-success.navbar-btn#reg-btn(type='button',data-toggle='modal',data-target='#reg') Sign up
+            else
+                a.btn.btn-default.navbar-btn#signout-btn(type='button', href = '/signout') Sign out
+                a.btn.btn-success.navbar-btn#post-btn(type='button' href = '#') Post
+                
       if success
         .alert.alert-success#myAlert
           a.close(data-dismiss="alert") &times;

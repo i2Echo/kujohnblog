@@ -1,20 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-var reg = require('../controllers/reg.js');
-var login = require('../controllers/login.js');
+var index = require('../controllers/index.js');
+var reg = require('../controllers/signup.js');
+var login = require('../controllers/signin.js');
 var checkLogin = require('../controllers/checkLogin.js');
-var addPageInfo = require('./addPageInfo.js');
 
-var  indexPageInfo = new addPageInfo(req, res, 'index', 'Home');
 /* GET home page. */
-router.get('/', indexPageInfo);
+router.get('/', index);
 
-router.get('/signup', checkLogin.checkLogin, reg.regGet);
-router.post('/signup', checkLogin.checkLogin, reg.regPost);
+router.get('/signup',reg.regGet);
+router.post('/signup',reg.regPost);
 
-router.get('/signin', checkLogin.checkLogin, login.loginGet);
-router.post('/signin', checkLogin.checkLogin, login.loginPost);
-router.get('/signout', checkLogin.checkLogin, login.logoutGet);
+router.get('/signin',login.loginGet);
+router.post('/signin',login.loginPost);
+
+router.get('/signout',login.logoutGet);
 
 module.exports = router;
