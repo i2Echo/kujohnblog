@@ -70,8 +70,5 @@ User.get = function(name, callback){
   });
 };
 
-//var Promise = require('bluebird');
-//Promise.promisifyAll(User);
-//Promise.promisifyAll(User.prototype);
-
 module.exports = User;
+

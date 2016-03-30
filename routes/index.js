@@ -5,16 +5,25 @@ var index = require('../controllers/index.js');
 var reg = require('../controllers/signup.js');
 var login = require('../controllers/signin.js');
 var checkLogin = require('../controllers/checkLogin.js');
+var article = require('../controllers/article.js');
 
 /* GET home page. */
 router.get('/', index);
 
-router.get('/signup',reg.regGet);
-router.post('/signup',reg.regPost);
+router.get('/signup', checkLogin.notLogin, reg.regGet);
+router.post('/signup', checkLogin.notLogin, reg.regPost);
 
-router.get('/signin',login.loginGet);
-router.post('/signin',login.loginPost);
+router.get('/signin', checkLogin.notLogin, login.loginGet);
+router.post('/signin', checkLogin.notLogin, login.loginPost);
 
-router.get('/signout',login.logoutGet);
+router.get('/signout', checkLogin.isLogin, login.logoutGet);
+
+router.get('/post', checkLogin.isLogin, article.getPost);
+router.post('/post', checkLogin.isLogin, article.savePost);
+
+router.post('/post', article.getOneArticle);
+
+//router.get('/user/:name', checkLogin.isLogin);
+
 
 module.exports = router;

@@ -1,11 +1,12 @@
 var User = require('../models/user.js');
+
 var crypto = require('crypto');
 var tool = require('./tool.js');
 
 var loginGet = function(req, res){
   var pageName = 'signin',
         title = 'Sign in';    
-    tool.temp(req, res, pageName, title)
+    tool.pageInit(req, res, pageName, title);
 };
 
 var loginPost = function(req, res){

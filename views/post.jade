@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .container-fluid.write-article
+    form(method='post', action='/post')
+      .form-group
+        label(for='title') Title
+        input.form-control#title(type='text',placeholder='Title',name="title")
+      .form-group
+        label(for='content') Content
+        input.form-control#content(type='text',placeholder='Content',name="content")
+
+        //label(for='myEditor') Markdown editor
+        //#myEditor
+      button.btn.btn-success.post-btn.btn-block(type='submit') Post your article
+
+block sidebar
+  include include/profileSide

@@ -1,0 +1,35 @@
+#login.modal.fade(tabindex='-1',role='dialog',aria-labelledby="loginModalLabel",aria-hidden="true")
+  .modal-dialog
+    .modal-content.sign-box
+      form(method='post',action='/signin')
+        .modal-header
+          button.close(type="button", data-dismiss="modal",aria-hidden="true")
+            span.fa.fa-close
+          h3.modal-title#loginModalLabel Login
+        .modal-body
+          .form-group
+            label(for='inputUsername') Username
+            input.form-control#inputUsername(type='text',placeholder='Username',name="name")
+          .form-group
+            label(for='inputPassword') Password
+            input.form-control#inputPassword(type='password',placeholder='Password',name="password")
+          button.btn.btn-success.btn-block(type='submit') Login
+#reg.modal.fade(tabindex='-1',role='dialog',aria-labelledby="regModalLabel",aria-hidden="true")
+  .modal-dialog
+    .modal-content.sign-box
+      form(method='post',action='/signup')
+        .modal-header
+          button.close(type="button", data-dismiss="modal",aria-hidden="true")
+            span.fa.fa-close
+          h3.modal-title#regModalLabel Register
+        .modal-body
+          .form-group
+            label(for='regUsername') Username
+            input.form-control#regUsername(type='text',placeholder='Username',name="name")
+          .form-group
+            label(for='regPassword') Password
+            input.form-control#regPassword(type='password',placeholder='Password',name="password")
+          .form-group
+            label(for='confirmPassword') Confirm your password
+            input.form-control#confirmPassword(type='password',placeholder='Password',name="password-repeat")
+          button.btn.btn-success.btn-block(type='submit') Sign up

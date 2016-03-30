@@ -19,6 +19,9 @@ a#logo-img{
   padding: 5px 15px;
   margin-right: 40px;
 }
+.username{
+  color: #fff;
+}
 
 .head-img{
   width: 100%;
@@ -35,6 +38,11 @@ img.fixed-bg{
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+/*alert*/
+#alertMessage{
+  margin-bottom: 0;
 }
 /*user login*/
 #user{

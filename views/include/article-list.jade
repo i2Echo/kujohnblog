@@ -1,6 +1,4 @@
-extends layout
-
-block content
+each article in articles
   .content-box.container-fluid
     .box-title
       a.h3(href='#') #{article.title}
@@ -14,7 +12,7 @@ block content
     .box-body
 
       p.text-indent #{article.content}
-      a#more(href='#') READ MORE
+      a#more(href='/article:_id') READ MORE
     .box-foot.row
       .archive.col-sm-2
         i.fa.fa-folder
@@ -28,5 +26,19 @@ block content
         i.fa.fa-star-o
         span 6
 
-block sidebar
-  include include/sidebar
+nav.text-center
+  ul.pagination
+    li.disabled
+      a(href='#', aria-label="Previous")
+        span(aria-hidden="true") &laquo;
+    li.active
+      a(href='#') 1
+        span.sr-only
+    - for (var i=2; i<6; i++){
+    li
+      a(href='#') #{i}
+        span.sr-only
+    - }
+    li
+      a(href='#', aria-label="Next")
+        span(aria-hidden="true") &raquo;

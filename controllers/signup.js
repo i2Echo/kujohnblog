@@ -5,7 +5,7 @@ var tool = require('./tool.js');
 var regGet = function(req, res){
     var pageName = 'signup',
         title = 'Sign up';    
-    tool.temp(req, res, pageName, title)
+    tool.pageInit(req, res, pageName, title);
 };
 
 var regPost = function(req, res){
@@ -25,7 +25,7 @@ var regPost = function(req, res){
   var newUser = new User({
     name: name,
     password: password,
-    email:req.body.email
+    //email:req.body.email
   });
   User.get(newUser.name, function (err, user) {
     if(err){
