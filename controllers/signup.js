@@ -1,11 +1,13 @@
 var User = require('../models/user.js');
 var crypto = require('crypto');
-var tool = require('./tool.js');
 
 var regGet = function(req, res){
-    var pageName = 'signup',
-        title = 'Sign up';    
-    tool.pageInit(req, res, pageName, title);
+  res.render('signup', {
+    title: 'Sign up',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
 };
 
 var regPost = function(req, res){

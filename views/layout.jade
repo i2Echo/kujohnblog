@@ -25,7 +25,9 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand#logo-img(href='#')
+          if user
+            var name = user.name
+          a.navbar-brand#logo-img(href='user/#{name}')
             img.img-circle(width='40', height='40', src='/images/logo.png')
           if user
             span.username #{user.name}

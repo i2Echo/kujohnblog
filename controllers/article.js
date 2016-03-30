@@ -28,9 +28,9 @@ var getPost = function (req, res) {
 
 var getOneArticle = function (req, res){
   var _id = req.params._id;
-  Article.get(_id,function(err, doc){
-    res.render('index', {
-      title: 'Home',
+  Article.getOne(_id,function(err, doc){
+    res.render('article', {
+      title: req.params.title,
       user: req.session.user,
       article: doc,
       success: req.flash('success').toString(),

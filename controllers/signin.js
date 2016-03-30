@@ -1,12 +1,14 @@
 var User = require('../models/user.js');
 
 var crypto = require('crypto');
-var tool = require('./tool.js');
 
 var loginGet = function(req, res){
-  var pageName = 'signin',
-        title = 'Sign in';    
-    tool.pageInit(req, res, pageName, title);
+  res.render('signin', {
+    title: 'Sign in',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
 };
 
 var loginPost = function(req, res){
