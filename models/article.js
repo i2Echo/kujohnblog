@@ -64,8 +64,7 @@ Article.get = function get(name, callback){
 };
 
 Article.getOne = function getOne(_id, callback){
-
-  articleModel.findOne({_id: ObjectId(_id)}, function(err, doc){
+  articleModel.findOne({_id: _id}, function(err, doc){
     if(err) {
       return callback(err);
     }

@@ -1,7 +1,7 @@
 each article in articles
   .content-box.container-fluid
     .box-title
-      a.h3(href='aritcle/#{article._id}') #{article.title}
+      a.h3(href='article/#{article._id}') #{article.title}
     .discrible
       span
         i.fa.fa-user
@@ -12,7 +12,7 @@ each article in articles
     .box-body
 
       p.text-indent #{article.content}
-      a#more(href='/aritcle/#{article._id}') READ MORE
+      a#more(href='/article/#{article._id}') READ MORE
     .box-foot.row
       .archive.col-sm-2
         i.fa.fa-folder
