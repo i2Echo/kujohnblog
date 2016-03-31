@@ -72,8 +72,12 @@ Article.getOne = function getOne(_id, callback){
   });
 };
 
-Article.getByPage = function getByPage(query, currentPage, callback){
-  var pageSize = 2;
+Article.getByPage = function getByPage(condition, currentPage, callback){
+  var query = {};
+  if(condition){
+    query.name = condition;
+  }
+  var pageSize = 10;
   var sort = {time: -1};
   //var currentPage = 1;
   var skipNum = (currentPage - 1)*pageSize;

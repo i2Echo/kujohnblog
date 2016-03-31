@@ -81,6 +81,7 @@ form.modal-body{
   margin: 30px auto;
   padding-top: 15px;
   background-color: #fff;
+  word-break:break-all;
 }
 .side-box:hover,
 .content-box:hover{
@@ -117,6 +118,15 @@ form.modal-body{
   border-top: 1px solid #ccc;
   padding: 10px 0;
 }
+.box-body .article-list{
+  max-height: 150px;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  margin: 10px 15px;
+}
+
 .box-body a#more{
   font-weight: 700;
 }
@@ -125,7 +135,14 @@ form.modal-body{
 }
 .write-article{
   background-color: #fff;
-  margin-top: 50px;
+  margin-top: 30px;
+  padding-top: 15px;
+}
+.write-article:hover{
+  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  -moz-box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  border-radius: 2px;
 }
 .write-article .post-btn{
   margin: 15px auto;

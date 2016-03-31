@@ -7,11 +7,9 @@ block content
         label(for='title') Title
         input.form-control#title(type='text',placeholder='Title',name="title")
       .form-group
-        label(for='content') Content
-        input.form-control#content(type='text',placeholder='Content',name="content")
-
-        //label(for='myEditor') Markdown editor
-        //#myEditor
+        label(for='content') tag
+        input.form-control#content(type='text',placeholder='Tag',name="tag")
+      textarea#summernote(name="content")
       button.btn.btn-success.post-btn.btn-block(type='submit') Post your article
 
 block sidebar

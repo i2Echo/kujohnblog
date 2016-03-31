@@ -1,17 +1,17 @@
 each article in articles
   .content-box.container-fluid
     .box-title
-      a.h3(href='article/#{article._id}') #{article.title}
+      a.h3(href='/article/#{article._id}') #{article.title}
     .discrible
       span
         i.fa.fa-user
-        a.author.h5(href='user/#{article.name}') #{article.name}
+        a.author.h5(href='/user/#{article.name}') #{article.name}
       span.post-time.pull-right
         i.fa.fa-clock-o
         | #{article.time}
     .box-body
 
-      p.text-indent #{article.content}
+      .article-list.text-indent !{article.content}
       a#more(href='/article/#{article._id}') READ MORE
     .box-foot.row
       .archive.col-sm-2
@@ -27,19 +27,20 @@ each article in articles
         span 6
 
 nav.text-center
+  - var url = isIndex ? '' : (title+'/')
   if pages > 1
     ul.pagination
       if !isFirstPage
         li
-          a(href='/article/page/#{page-1}', aria-label="Previous")
+          a(href='/#{url}page/#{page-1}', aria-label="Previous")
             span(aria-hidden="true") &laquo;
       - for (var i=1; i<=pages; i++){
         - var isActive = (page == i) ? 'active': ''
         li(class='#{isActive}')
-          a(href='/article/page/#{i}') #{i}
+          a(href='/#{url}page/#{i}') #{i}
             span.sr-only
       - }
       if !isLastPage
         li
-          a(href='/article/page/#{page+1}', aria-label="Next")
+          a(href='/#{url}page/#{page+1}', aria-label="Next")
             span(aria-hidden="true") &raquo;

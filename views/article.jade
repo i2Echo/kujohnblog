@@ -3,17 +3,16 @@ extends layout
 block content
   .content-box.container-fluid
     .box-title
-      a.h3(href='#') #{article.title}
+      .h3(href='#') #{article.title}
     .discrible
       span
         i.fa.fa-user
-        a.author.h5(href='#') #{article.name}
+        a.author.h5(href='/user/#{article.name}') #{article.name}
       span.post-time.pull-right
         i.fa.fa-clock-o
         | #{article.time}
     .box-body
-
-      p.text-indent #{article.content}
+      .text-indent.article-content !{article.content}
     .box-foot.row
       .archive.col-sm-2
         i.fa.fa-folder

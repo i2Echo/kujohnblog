@@ -10,7 +10,7 @@ var user = require('../controllers/user.js');
 
 /* GET home page. */
 router.get('/', index);
-router.get('/article/page/:page', index);
+router.get('/page/:page', index);
 
 router.get('/signup', checkLogin.notLogin, reg.regGet);
 router.post('/signup', checkLogin.notLogin, reg.regPost);
@@ -25,7 +25,7 @@ router.post('/post', checkLogin.isLogin, article.savePost);
 
 router.get('/article/:_id', article.getOneArticle);
 
-router.get('/user/:name', checkLogin.isLogin, user.getProfile);
-
+router.get('/user/:name', user.getProfile);
+router.get('/:name/page/:page', user.getProfile);
 
 module.exports = router;

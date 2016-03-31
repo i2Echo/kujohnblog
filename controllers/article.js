@@ -7,6 +7,7 @@ var savePost = function (req, res) {
         title: req.body.title,
         content: req.body.content
       });
+  console.log(article.content);
   article.save(function (err) {
     if (err) {
       req.flash('error', err);
@@ -38,7 +39,6 @@ var getOneArticle = function (req, res){
     });
   });
 };
-
 
 module.exports = {
   savePost: savePost,
