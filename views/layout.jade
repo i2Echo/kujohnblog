@@ -26,9 +26,8 @@ html
             span.icon-bar
             span.icon-bar
           if user
-            a.navbar-brand#logo-img(href='/user/#{user.name}')
+            a.navbar-brand#logo-img(href='/user/#{user.name}',title="#{user.name}", data-container="body", data-toggle="popover", data-trigger="hover", data-placement="bottom", data-content="")
               img.img-circle(width='40', height='40', src='/images/logo.png')
-            span.username #{user.name}
 
         .collapse.navbar-collapse#bs-navbar
           ul.nav.navbar-nav.text-center
@@ -60,9 +59,9 @@ html
     .main.container-fluid
       .container
         .row
-          .col-sm-8.col-sm-offset-1.blog-main
+          .col-sm-8.blog-main
             block content
-          .col-sm-3.page-sidebar
+          .col-sm-4.page-sidebar
             block sidebar
       footer.bs-footer.pull-left
         p.copyright.text-center Powered by <a id='author' href='#'>echo</a> &copy;2016
@@ -99,6 +98,13 @@ html
         });
         $(".close").click(function () {
           $("#alertMessage").alert();
-        });
+        }); 
+        $('.upload').on('click', function(e) { 
+          e.preventDefault(); $(this).closest('input[type=file]').trigger('click');
+        });       
+      });
+      $(function (){ 
+          $("[data-toggle='popover']").popover();
 
+          $('[data-toggle="tooltip"]').tooltip();
       });

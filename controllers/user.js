@@ -1,6 +1,7 @@
 
 var User = require('../models/user.js');
 var Article = require('../models/article.js');
+var multer  = require('multer');
 
 var PAGE_SIZE = 10;
 
@@ -33,8 +34,12 @@ var getProfile = function(req, res){
     });
   });
 };
+var uploadLogo = function(req, res){
+  req.flash('success', '文件上传成功!');
+}
 
 module.exports = {
-  getProfile: getProfile
+  getProfile: getProfile,
+  uploadLogo: uploadLogo,
 };
 

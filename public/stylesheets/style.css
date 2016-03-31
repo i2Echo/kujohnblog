@@ -16,11 +16,8 @@ a {
 }
 
 a#logo-img{
-  padding: 5px 15px;
-  margin-right: 40px;
-}
-.username{
-  color: #fff;
+  padding: 5px;
+  margin-right: 30px;
 }
 
 .head-img{
@@ -126,9 +123,12 @@ form.modal-body{
   -o-text-overflow: ellipsis;
   margin: 10px 15px;
 }
-
+.box-body .article-content{
+  margin: 10px 15px; 
+}
 .box-body a#more{
   font-weight: 700;
+  margin-left: 20px;
 }
 .box-foot{
   margin: 10px auto;
@@ -194,6 +194,23 @@ form.modal-body{
 #profile-box .user-btn button{
   margin: 10px 5px;
   color: #fff;
+}
+#profile-box .user-btn span{
+    margin: auto 5px;
+}
+#profile-box .user-meta{
+  padding: 0;
+}
+#profile-box .user-meta div{
+  min-width: 65px; 
+}
+#profile-box .user-meta strong{
+  margin: auto 5px;
+  color: #4078c0;
+}
+#profile-box .user-meta span{
+  font-size: 12px;  
+  color: #ccc;
 }
 
 /*footer*/

@@ -28,4 +28,6 @@ router.get('/article/:_id', article.getOneArticle);
 router.get('/user/:name', user.getProfile);
 router.get('/:name/page/:page', user.getProfile);
 
+router.post('/upload', user.uploadLogo);
+
 module.exports = router;
