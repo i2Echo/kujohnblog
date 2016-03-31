@@ -9,7 +9,7 @@ var getProfile = function(req, res){
       return res.redirect('/');
     }
 
-    Article.get(user.name, function (err, docs) {
+    Article.getByName(user.name, function (err, docs) {
       if (err) {
         req.flash('error', err);
         return res.redirect('/');

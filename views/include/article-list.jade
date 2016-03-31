@@ -27,18 +27,19 @@ each article in articles
         span 6
 
 nav.text-center
-  ul.pagination
-    li.disabled
-      a(href='#', aria-label="Previous")
-        span(aria-hidden="true") &laquo;
-    li.active
-      a(href='#') 1
-        span.sr-only
-    - for (var i=2; i<6; i++){
-    li
-      a(href='#') #{i}
-        span.sr-only
-    - }
-    li
-      a(href='#', aria-label="Next")
-        span(aria-hidden="true") &raquo;
+  if pages > 1
+    ul.pagination
+      if !isFirstPage
+        li
+          a(href='/article/page/#{page-1}', aria-label="Previous")
+            span(aria-hidden="true") &laquo;
+      - for (var i=1; i<=pages; i++){
+        - var isActive = (page == i) ? 'active': ''
+        li(class='#{isActive}')
+          a(href='/article/page/#{i}') #{i}
+            span.sr-only
+      - }
+      if !isLastPage
+        li
+          a(href='/article/page/#{page+1}', aria-label="Next")
+            span(aria-hidden="true") &raquo;

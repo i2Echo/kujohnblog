@@ -39,6 +39,7 @@ var getOneArticle = function (req, res){
   });
 };
 
+
 module.exports = {
   savePost: savePost,
   getPost: getPost,

@@ -10,6 +10,7 @@ var user = require('../controllers/user.js');
 
 /* GET home page. */
 router.get('/', index);
+router.get('/article/page/:page', index);
 
 router.get('/signup', checkLogin.notLogin, reg.regGet);
 router.post('/signup', checkLogin.notLogin, reg.regPost);

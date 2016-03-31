@@ -42,7 +42,7 @@ Article.prototype.save = function save(callback){
     content: this.content
   };
   var newUser = new articleModel(article);
-  newUser.save(function(err, user){
+  newUser.save(function(err, article){
     if(err){
       return callback(err);
     }
@@ -50,14 +50,14 @@ Article.prototype.save = function save(callback){
   });
 };
 
-Article.get = function get(name, callback){
+Article.getByName = function get(name, callback){
   var query = {};
   if(name){
     query.name = name;
   }
-  articleModel.find(query, function(err, docs){
+  articleModel.find(query).sort({time: -1}).exec(function(err, docs){
     if(err) {
-      return callback(err);
+          return callback(err);
     }
     callback(null, docs);
   });
@@ -72,5 +72,20 @@ Article.getOne = function getOne(_id, callback){
   });
 };
 
+Article.getByPage = function getByPage(query, currentPage, callback){
+  var pageSize = 2;
+  var sort = {time: -1};
+  //var currentPage = 1;
+  var skipNum = (currentPage - 1)*pageSize;
+  articleModel.count(query, function(err, count){
+
+    articleModel.find(query).skip(skipNum).limit(pageSize).sort(sort).exec(function(err, docs){
+      if (err){
+        return callback(err);
+      }
+      callback(null, count, docs);
+    });
+  });
+};
 
 module.exports = Article;
