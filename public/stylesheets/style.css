@@ -14,10 +14,14 @@ a {
 .md-btn{
   margin: 5px auto;
 }
+.hove-style:hover{
+  color: #dd5c69;
+  text-decoration: none;
+}
 
 a#logo-img{
-  padding: 5px;
-  margin-right: 30px;
+  padding: 5px 10px;
+  margin-right: 90px;
 }
 
 .head-img{
@@ -40,7 +44,9 @@ img.fixed-bg{
 /*alert*/
 #alertMessage{
   margin-bottom: 0;
+  text-align: center;
 }
+
 /*user login*/
 #user{
   padding: 0 20px;
@@ -66,6 +72,18 @@ form.modal-body{
   background-color: #f2f2f3;
   padding-top: 20px;
 }
+@media (min-width: 768px){
+  #box-left{
+    padding-right: 40px;
+  }
+}
+
+div.blog-main{
+  padding: 0;
+}
+.blog-main .content-box{
+  padding: 0;
+}
 
 /*content*/
 .text-indent{
@@ -80,6 +98,14 @@ form.modal-body{
   background-color: #fff;
   word-break:break-all;
 }
+.content-box .discrible{
+  margin: 0 10px;
+}
+.content-box .list-title{
+  border-left: 4px solid #000;
+  padding-left: 15px;
+}
+
 .side-box:hover,
 .content-box:hover{
   -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.4);
@@ -88,9 +114,14 @@ form.modal-body{
   border-radius: 2px;
 }
 .box-title{
-  line-height: 3em;
+  line-height: 30px;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 10px auto;
 }
-
+.box-title P{
+  color: #000;
+}
 .discrible span{
   margin-right: 10px;
   line-height: 20px;
@@ -116,7 +147,7 @@ form.modal-body{
   padding: 10px 0;
 }
 .box-body .article-list{
-  max-height: 150px;
+  max-height: 135px;
   overflow: hidden;
   word-wrap: break-word;
   text-overflow: ellipsis;
@@ -130,9 +161,20 @@ form.modal-body{
   font-weight: 700;
   margin-left: 20px;
 }
-.box-foot{
-  margin: 10px auto;
+div.box-foot{
+  margin: 10px 0;
 }
+.box-foot .pull-right{
+  margin: 0 15px;
+}
+.box-foot .pv,
+.box-foot .cmt{
+  min-width: 40px;
+}
+nav ul.pager{
+  margin: 30px 15px 10px;
+}
+
 .write-article{
   background-color: #fff;
   margin-top: 30px;
@@ -191,7 +233,7 @@ form.modal-body{
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
 }
-#profile-box .user-btn button{
+#profile-box .user-btn a{
   margin: 10px 5px;
   color: #fff;
 }
@@ -199,10 +241,10 @@ form.modal-body{
     margin: auto 5px;
 }
 #profile-box .user-meta{
-  padding: 0;
-}
-#profile-box .user-meta div{
-  min-width: 65px; 
+  padding: 0px;
+  /*margin-left: 0;*/
+  min-width: 55px;
+  display: inline-block;
 }
 #profile-box .user-meta strong{
   margin: auto 5px;
@@ -210,7 +252,9 @@ form.modal-body{
 }
 #profile-box .user-meta span{
   font-size: 12px;  
-  color: #ccc;
+  color: #b0b0b0;
+  /*min-width: 55px;*/
+  display: block;
 }
 
 /*footer*/

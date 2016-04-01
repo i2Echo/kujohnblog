@@ -2,38 +2,52 @@
   .profile-box-title.h4 Profile
   .profile-box-body.text-center
     .profile-logo
-      a.upload(href='/upload')
-        img.img-circle(width='100', height='100', src='/images/logo.png',data-toggle="tooltip" data-placement="top" title='Change profile img')
-      input.hide(type="file" name="image" value="")
+      if user
+        input#up.hide(type="file", name="image", value="")
+        script.
+          function addImg() {
+            document.getElementById('up').click();
+          }
+      a.upload(href='#', onclick="#{user ? 'addImg()' : ''}")
+        img.img-circle(width='100', height='100', src='/images/logo.png',data-toggle="tooltip", data-placement="top", title="#{user ? 'Change profile img' : ''}")
     .profile-info
       h4
-      strong #{user.name}
+        strong #{title}
       h5
         strong About
       p a student of the CCNU
       .row.container-fluid
-        .col-sm-4.container-fluid.user-meta
+        .container-fluid.user-meta
           .art
-            a(href='#')
+            a(href='/#{title}/page/1')
               i.fa.fa-file-text
-                strong 66
+                strong #{count}
               span Articles
-        .col-sm-4.container-fluid.user-meta
+        .container-fluid.user-meta
           .foll
             a(href='#')
-              i.fa.fa-heart 
+              i.fa.fa-heart
                 strong 7
               span Following
-        .col-sm-4.container-fluid.user-meta
+        .container-fluid.user-meta
           .fav
             a(href='#')
-              i.fa.fa-user         
+              i.fa.fa-user
                 strong 34
               span Followers
-      .user-btn.row.text-center
-        button.btn.btn-success
-          span.fa.fa-envelope
-          | message
-        button.btn.btn-success
-          span.fa.fa-user-plus
-          | following
+      if user
+        .user-btn.row.text-center
+          a.btn.btn-success
+            span.fa.fa-cog
+            | Setting
+          a.btn.btn-success(href='/post')
+            span.fa.fa-edit
+            | Post
+      else
+        .user-btn.row.text-center
+          a.btn.btn-success
+            span.fa.fa-envelope
+            | Send
+          a.btn.btn-success
+            span.fa.fa-user-plus
+            | Follow

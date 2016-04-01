@@ -1,16 +1,7 @@
-extends layout
+extends include/iframeCom
 
 block content
-  .container-fluid.write-article
-    form(method='post', action='/post')
-      .form-group
-        label(for='title') Title
-        input.form-control#title(type='text',placeholder='Title',name="title")
-      .form-group
-        label(for='content') tag
-        input.form-control#content(type='text',placeholder='Tag',name="tag")
-      textarea#summernote(name="content")
-      button.btn.btn-success.post-btn.btn-block(type='submit') Post your article
+  include include/editor
 
 block sidebar
   include include/profileSide

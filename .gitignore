@@ -10,3 +10,4 @@ demo/.svn/
 *.swp
 .sw*
 .idea/*
+*.log

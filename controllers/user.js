@@ -25,6 +25,7 @@ var getProfile = function(req, res){
         articles: docs,
         user : req.session.user,
         page: currentPage,
+        count: count,
         pages: Math.ceil(count/PAGE_SIZE),
         isFirstPage: (currentPage-1)==0,
         isLastPage: ((currentPage-1) * PAGE_SIZE + docs.length) == count,
@@ -34,12 +35,21 @@ var getProfile = function(req, res){
     });
   });
 };
-var uploadLogo = function(req, res){
+var uploadProfilePic = function(req, res){
   req.flash('success', '文件上传成功!');
+}
+
+var setProfile_get = function (req, res){
+
+}
+var setProfile_post = function (req, res){
+
 }
 
 module.exports = {
   getProfile: getProfile,
-  uploadLogo: uploadLogo,
+  uploadLogo: uploadProfilePic,
+  setProfile_post: setProfile_post,
+  setProfile_get: setProfile_get
 };
 

@@ -1,7 +1,8 @@
 each article in articles
   .content-box.container-fluid
-    .box-title
-      a.h3(href='/article/#{article._id}') #{article.title}
+    .box-title.list-title
+      a.hove-style(href='/article/#{article._id}')
+        span #{article.title}
     .discrible
       span
         i.fa.fa-user
@@ -14,17 +15,20 @@ each article in articles
       .article-list !{article.content}
       a#more(href='/article/#{article._id}') READ MORE
     .box-foot.row
-      .archive.col-sm-2
+      .pull-right
+        span.cmt
+          i.fa.fa-comments
+          span 2
+        span.pv
+          i.fa.fa-eye
+          span #{article.pv}
+      .archive.col-sm-3
         i.fa.fa-folder
         span python
-      .tag.col-sm-8
+      .tag.col-sm-6
         i.fa.fa-tags
         span tags
-      .col-sm-2
-        i.fa.fa-comments
-        span 2
-        i.fa.fa-star-o
-        span 6
+
 
 nav.text-center
   - var url = isIndex ? '' : (title+'/')

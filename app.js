@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
+var multer = require('multer');
 
 var routes = require('./routes/index');
 var settings = require('./settings');
@@ -14,6 +15,10 @@ var settings = require('./settings');
 
 var mongoose = require('mongoose');
 mongoose.connect(settings.dbUrl);
+var fs = require('fs');
+var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
+
 
 var app = express();
 
@@ -25,10 +30,21 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+
+//add log
+app.use(logger('combined', {stream: accessLog}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//error log
+app.use(function (err, req, res, next) {
+  var meta = '[' + new Date() + '] ' + req.url + '\n';
+  errorLog.write(meta + err.stack + '\n');
+  next();
+});
 
 //session
 app.use(session({
@@ -44,8 +60,23 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-
 app.use(flash());
+
+app.use(multer({
+  dest: "./public/images",
+  limits: {
+    filesize: 1024*1024*5
+  },
+  fileFilter: function(req, file, cb){
+    if(file.mimetype.slice(0, 5) == "image") cb(null, true);
+    else cb(new Error('please upload img and limited 5M'), false);
+  },
+  rename: function(fieldname, filename){
+    console.log(filename);
+    return filename.replace(/\w+/g, '-').toLowerCase()+Date.now();
+  }
+}));
+
 app.use('/', routes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

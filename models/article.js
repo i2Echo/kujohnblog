@@ -5,7 +5,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var ObjectId = Schema.Types.ObjectId;
+//var ObjectId = Schema.Types.ObjectId;
 
 var getTime = function() {
   var date = new Date();
@@ -13,6 +13,7 @@ var getTime = function() {
   var time = date.getFullYear() + "-" +(date.getMonth() + 1) + "-" + date.getDate() + " " +
       date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())+
       ":" + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+  console.log(time);
   return time;
 };
 
@@ -20,6 +21,10 @@ var articleSchema = new Schema({
   name: String,
   title: String,
   content: String,
+  pv: {
+    type: Number,
+    default: 0
+  },
   time:{
     type: String,
     default: getTime
@@ -64,7 +69,7 @@ Article.getByName = function get(name, callback){
 };
 
 Article.getOne = function getOne(_id, callback){
-  articleModel.findOne({_id: _id}, function(err, doc){
+  articleModel.findByIdAndUpdate(_id, { $inc: { pv: 1 }}, function(err, doc){
     if(err) {
       return callback(err);
     }

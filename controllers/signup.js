@@ -27,7 +27,7 @@ var regPost = function(req, res){
   var newUser = new User({
     name: name,
     password: password,
-    //email:req.body.email
+    email:req.body.email
   });
   User.get(newUser.name, function (err, user) {
     if(err){
