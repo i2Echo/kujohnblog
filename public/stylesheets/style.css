@@ -119,6 +119,10 @@ div.blog-main{
   font-size: 24px;
   margin: 10px auto;
 }
+.art-title{
+    margin-top: 30px;
+}
+
 .box-title P{
   color: #000;
 }
@@ -147,7 +151,7 @@ div.blog-main{
   padding: 10px 0;
 }
 .box-body .article-list{
-  max-height: 135px;
+  max-height: 130px;
   overflow: hidden;
   word-wrap: break-word;
   text-overflow: ellipsis;
@@ -236,6 +240,7 @@ nav ul.pager{
 #profile-box .user-btn a{
   margin: 10px 5px;
   color: #fff;
+  min-width: 92px;
 }
 #profile-box .user-btn span{
     margin: auto 5px;
