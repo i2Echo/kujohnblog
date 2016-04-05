@@ -28,8 +28,8 @@ router.get('/article/:_id', article.getOneArticle);
 router.get('/user/:name', user.getProfile);
 router.get('/:name/page/:page', user.getProfile);
 
-router.get('/user/setting/profile', checkLogin.isLogin, user.setProfile_get);
-//router.get('/user/setting/profile', checkLogin.isLogin, user.setProfile);
-//router.post('/upload', checkLogin.isLogin, user.uploadLogo);
+router.get('/user/settings/profile', checkLogin.isLogin, user.setProfile_get);
+router.post('/user/settings/profile', checkLogin.isLogin, user.setProfile_post);
+//router.post('/upload', checkLogin.isLogin, user.uploadProfilePic);
 
 module.exports = router;

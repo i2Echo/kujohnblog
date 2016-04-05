@@ -63,7 +63,7 @@ app.use(session({
 app.use(flash());
 
 app.use(multer({
-  dest: "./public/images",
+  dest: "./public/upload",
   limits: {
     filesize: 1024*1024*5
   },

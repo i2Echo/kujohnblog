@@ -44,7 +44,7 @@ var regPost = function(req, res){
         req.flash('error', err);
         return res.redirect('/signup')
       }
-      req.session.user = newUser;
+      req.session.user = user;
       req.flash('success', 'User created success!');
       res.redirect('/');
     });

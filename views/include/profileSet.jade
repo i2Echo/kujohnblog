@@ -1,5 +1,28 @@
-.panel.panel-default
+.panel.panel-default.profile-panel
   .panel-heading
     h1.panel-title Profile setting
-  .panel-body       
-
+  .panel-body
+    form(method='post',enctype='multipart/form-data').profile-form
+      dl
+        dt Profile picture
+        dd.clearfix
+          img.pull-left.img-circle(width='80', height='80', src='#{user.profilePic}')
+          .upload-picture.pull-left
+            a.btn.btn-default(href='#')
+              label(for='uplaod-profile-picture') Upload new picture
+                input.upload-file-btn#uplaod-profile-picture(type='file', name='profilePic')
+            .upload-mate
+              p You can also drag and drop a picture from your computer.
+      .form-group
+        label(for='username') Username
+        input.form-control#username(type='text',value='#{user.name}',name="name")
+      .form-group
+        label(for='email') Email
+        input.form-control#email(type='Email',value='#{email = user.email ? user.email : ""}',name="email")
+      .form-group
+        label(for='url') Personal url
+        input.form-control#url(type='text',value='#{url = user.url ? user.url : ""}',name="url")
+      .form-group
+        label(for='location') Location
+        input.form-control#location(type='text',value='#{location = user.location ? user.location : ""}',name="location")
+      button.btn.btn-success(type='submit') Update profile

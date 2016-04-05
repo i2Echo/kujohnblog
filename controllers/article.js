@@ -7,7 +7,7 @@ var savePost = function (req, res) {
         title: req.body.title,
         content: req.body.content
       });
-  console.log(article.content);
+  //console.log(article.content);
   article.save(function (err) {
     if (err) {
       req.flash('error', err);
@@ -29,15 +29,20 @@ var getPost = function (req, res) {
 
 var getOneArticle = function (req, res){
   var _id = req.params._id;
-  Article.getOne(_id,function(err, doc){
-    res.render('article', {
-      title: req.params.title,
-      user: req.session.user,
-      article: doc,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
+  if (id.match(/^[0-9a-fA-F]{24}$/))
+    Article.getOne(_id,function(err, doc){
+      res.render('article', {
+        title: req.params.title,
+        user: req.session.user,
+        article: doc,
+        success: req.flash('success').toString(),
+        error: req.flash('error').toString()
+      });
     });
-  });
+  else{
+    req.flash('err', 'Article not exists');
+    res.redirect('back');
+  }
 };
 
 module.exports = {

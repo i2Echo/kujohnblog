@@ -15,6 +15,18 @@ var userSchema = new Schema({
     lowercase:true
   },
   password: String,
+  profilePic: {
+    type: String,
+    default: '/images/logo.png'
+  },
+  url:  {
+    type: String,
+    default: '未填写'
+  },
+  location:  {
+    type: String,
+    default: '未填写'
+  },
   //hashedPassword: String,
   //salt: String,
   // 0: normal user
@@ -22,10 +34,10 @@ var userSchema = new Schema({
   // 2: professional user
   // >10: admin
   // >50: super admin
-  role: {
-    type: Number,
-    default: 0
-  },
+  //role: {
+  //  type: Number,
+  //  default: 0
+  //},
   created:{
     type: Date,
     default: Date.now
@@ -69,6 +81,23 @@ User.get = function(name, callback){
     callback(null, user);
   });
 };
+User.update = function(condition, updates, callback){
+  var update = {};
+  if(updates){
+    //update.name = updates.name;
+    //update.email = updates.email;
+    //update.profilePic = updates.profilePic;
+    //update.url = updates.url;
+    //update.location = updates.location;
+    update = updates;
+  }
+  userModel.findOneAndUpdate(condition, {$set: update}, function(err, user){
+    if(err){
+      return callback(err);
+    }
+    callback(null, user);
+  });
+}
 
 module.exports = User;
 

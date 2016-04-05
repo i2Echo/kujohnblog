@@ -38,7 +38,7 @@ var loginPost = function(req, res){
       req.flash('error', 'Password error,please try again!');
       return res.redirect('/signin');
     }
-    req.session.user = newUser;
+    req.session.user = user;
     req.flash('success', 'Login success!');
     res.redirect('/');
   });

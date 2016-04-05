@@ -9,13 +9,38 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #4078c0;
+}
+.upload-file-btn{
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-height: 39px;
+  max-width: 158px;
+  opacity: 0.0001;
+  cursor: pointer;
+}
+.upload-picture a{
+  position: relative;
+  margin: 10px;
+}
+.upload-picture p{
+  margin-left: 10px;
+}
+.upload-picture{
+  margin-left: 20px;
+}
+/*.set-item a.list-group-item{*/
+  /*color: #4078c0;*/
+/*}*/
+.profile-form input{
+  max-width: 500px;
 }
 .md-btn{
   margin: 5px auto;
 }
 .hove-style:hover{
-  color: #dd5c69;
+  color: #d45658;
   text-decoration: none;
 }
 
@@ -66,7 +91,9 @@ img.fixed-bg{
 form.modal-body{
   margin-bottom: 20px;
 }
-
+.profile-panel{
+  margin-top: 30px;
+}
 
 .main{
   background-color: #f2f2f3;

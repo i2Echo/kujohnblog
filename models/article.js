@@ -5,7 +5,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-//var ObjectId = Schema.Types.ObjectId;
+var ObjectId = Schema.Types.ObjectId;
 
 var getTime = function() {
   var date = new Date();
@@ -13,7 +13,6 @@ var getTime = function() {
   var time = date.getFullYear() + "-" +(date.getMonth() + 1) + "-" + date.getDate() + " " +
       date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())+
       ":" + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
-  console.log(time);
   return time;
 };
 
@@ -55,18 +54,18 @@ Article.prototype.save = function save(callback){
   });
 };
 
-Article.getByName = function get(name, callback){
-  var query = {};
-  if(name){
-    query.name = name;
-  }
-  articleModel.find(query).sort({time: -1}).exec(function(err, docs){
-    if(err) {
-          return callback(err);
-    }
-    callback(null, docs);
-  });
-};
+//Article.getByName = function get(name, callback){
+//  var query = {};
+//  if(name){
+//    query.name = name;
+//  }
+//  articleModel.find(query).sort({time: -1}).exec(function(err, docs){
+//    if(err) {
+//          return callback(err);
+//    }
+//    callback(null, docs);
+//  });
+//};
 
 Article.getOne = function getOne(_id, callback){
   articleModel.findByIdAndUpdate(_id, { $inc: { pv: 1 }}, function(err, doc){
@@ -96,5 +95,13 @@ Article.getByPage = function getByPage(condition, currentPage, callback){
     });
   });
 };
+Article.updateArticel = function updateArticel(condition, update, callback){
+
+  articleModel.update(condition, update, {multi: true}).exec(function(err){
+    if (err){
+      return callback(err);
+    }
+  });
+}
 
 module.exports = Article;

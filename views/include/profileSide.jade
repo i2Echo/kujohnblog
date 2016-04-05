@@ -2,14 +2,8 @@
   .profile-box-title.h4 Profile
   .profile-box-body.text-center
     .profile-logo
-      if user
-        input#up.hide(type="file", name="image", value="")
-        script.
-          function addImg() {
-            document.getElementById('up').click();
-          }
-      a.upload(href='#', onclick="#{user ? 'addImg()' : ''}")
-        img.img-circle(width='100', height='100', src='/images/logo.png',data-toggle="tooltip", data-placement="top", title="#{user ? 'Change profile img' : ''}")
+      a(href='#')
+        img.img-circle(width='100', height='100', src='#{user.profilePic}')
     .profile-info
       h4
         strong #{title}
@@ -37,7 +31,7 @@
               span Followers
       if user
         .user-btn.row.text-center
-          a.btn.btn-success
+          a.btn.btn-success(href='/user/settings/profile')
             span.fa.fa-cog
             | Setting
           a.btn.btn-success(href='/post')
