@@ -18,6 +18,10 @@ var getTime = function() {
 
 var articleSchema = new Schema({
   name: String,
+  // name: {
+  //   type: ObjectId,
+  //   ref: 'User'
+  // },
   title: String,
   content: String,
   pv: {
@@ -96,11 +100,12 @@ Article.getByPage = function getByPage(condition, currentPage, callback){
   });
 };
 Article.updateArticel = function updateArticel(condition, update, callback){
-
-  articleModel.update(condition, update, {multi: true}).exec(function(err){
+  console.log(condition);
+  articleModel.update(condition, update, {multi: true}).exec(function(err, docs){
     if (err){
       return callback(err);
     }
+    console.log(docs);
   });
 }
 

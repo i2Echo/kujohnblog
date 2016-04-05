@@ -5,7 +5,7 @@ var multer  = require('multer');
 var fs = require('fs');
 
 var PAGE_SIZE = 10;
-var uploadDir = './public/upload/';
+var uploadDir = './public/';
 
 var getProfile = function(req, res){
   User.get(req.params.name, function (err, user) {
@@ -56,29 +56,24 @@ var setProfile_post = function (req, res){
   }
   console.log(req.body);
   var updates = {
-    name: req.body.name,
-    email: req.body.email,
-    profilePic: (req.files.profilePic ? '/upload/'+req.files.profilePic.name : ''),
-    url: req.body.url,
-    location: req.body.location
+    name: req.body.name || req.session.user.name,
+    email: req.body.email || req.session.user.email,
+    profilePic: (req.files.profilePic ? '/upload/'+req.files.profilePic.name : req.session.user.profilePic),
+    url: req.body.url || req.session.user.url,
+    location: req.body.location || req.session.user.location
   }
-  for (var key in updates){
-    if (!updates[key]){
-      delete updates[key];
-    }
-  }
+
   console.log(updates);
   User.get(updates.name, function (err, user) {
     if(user){
-      if(user.name!=condition){
-        req.flash('error', 'Username already exists');
-        return res.redirect('/user/settings/profile');
-      }
-      delete updates.name;
+        if(user.name!=condition){//判断是否为它原name值
+          req.flash('error', 'Username already exists');
+          return res.redirect('/user/settings/profile');
+        }
     }
     User.update({name : condition }, updates, function(err, Ouser){
       if(err){
-        console.log(err);
+        // console.log(err);
         if(req.files.profilePic){
           fs.unlink(uploadDir + req.files.profilePic.name, function(err){
             if(err)
@@ -88,13 +83,20 @@ var setProfile_post = function (req, res){
         req.flash('error', 'Try again');
         return res.redirect('/user/settings/profile');
       }
-      Article.updateArticel(Ouser.name, {name: updates.name}, function(err, callback){
+      if(req.files.profilePic && (req.session.user.profilePic!='/images/default-logo.png')){
+        console.log(req.session.user.profilePic);
+        fs.unlink(uploadDir + req.session.user.profilePic, function(err){          
+          if(err)
+            throw err;
+        });
+      }
+      Article.updateArticel({name: Ouser.name}, {name: updates.name}, function(err, callback){
         if(err){
           req.flash('error', 'Error, Try again');
           return res.redirect('/user/settings/profile');
         }
       });
-      User.get(condition, function (err, user) {
+      User.get(updates.name, function (err, user) {
         req.session.user = user;
         req.flash('success', 'Update success!');
         res.redirect('/user/'+user.name);

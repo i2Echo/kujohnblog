@@ -11,3 +11,4 @@ demo/.svn/
 .sw*
 .idea/*
 *.log
+.vscode/*
