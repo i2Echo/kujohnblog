@@ -29,7 +29,7 @@
               i.fa.fa-user
                 strong 34
               span Followers
-      if user
+      if (user.name == visitUser.name)
         .user-btn.row.text-center
           a.btn.btn-success(href='/user/settings/profile')
             span.fa.fa-cog
