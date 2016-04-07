@@ -6,43 +6,19 @@ var fs = require('fs');
 var PAGE_SIZE = 10;
 var uploadDir = './public/';
 
-//User.update = function(condition, updates, callback){
-//  var update = {};
-//  if(updates){
-//    //update.name = updates.name;
-//    //update.email = updates.email;
-//    //update.profilePic = updates.profilePic;
-//    //update.url = updates.url;
-//    //update.location = updates.location;
-//    update = updates;
-//  }
-//  User.findOneAndUpdate(condition, {$set: update}, function(err, user){
-//    if(err){
-//      return callback(err);
-//    }
-//    callback(null, user);
-//  });
-//}
-
 var getProfile = function(req, res){
-  console.log("====ok");
   User.findOne({name: req.params.name}, function (err, user) {
-    var _name = req.params.name;
     if (!user) {
       req.flash('error', '用户不存在!');
       return res.redirect('/');
     }
     var currentPage = parseInt(req.params.page) || 1;
-    midFunction.getByPage({name: req.params.name}, currentPage, function (err, count, docs) {
+    midFunction.getByPage({author: user._id}, currentPage, function (err, count, docs) {
       if (err) {
         req.flash('error', err);
         console.log(err);
         return res.redirect('/');
       }
-
-      console.log('===========');
-      console.log(count);
-      console.log(user);
       res.render('profile', {
         title: req.params.name,
         isIndex: false,

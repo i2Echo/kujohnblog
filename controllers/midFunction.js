@@ -2,7 +2,6 @@ var Article = require('../models/article.js');
 
 exports.getByPage = function (condition, currentPage, callback){
   var query = condition || {};
-
   var pageSize = 10;
   var sort = {time: -1};
   //var currentPage = 1;
@@ -16,3 +15,14 @@ exports.getByPage = function (condition, currentPage, callback){
     });
   });
 };
+
+exports.getCount = function(condition, callback){
+  var query = condition || {};
+
+  Article.count(query, function(err, count) {
+    if (err){
+      return callback(err);
+    }
+    callback(null, count);
+  });
+}

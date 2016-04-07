@@ -32,15 +32,12 @@ html
     //script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
     script(type='text/javascript', src='//cdn.bootcss.com/jquery/2.1.4/jquery.min.js')
     script.
-      window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')
+      window.jQuery || document.write('<script src="/javascripts/jquery-2.1.4.min.js"><\/script>')
 
     script(type='text/javascript', src='/javascripts/bootstrap.min.js')
     script(type='text/javascript', src='/javascripts/totop.js')
     script(type='text/javascript', src='/plugins/summernote/summernote.js')
-    //script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js')
-    //script(type='text/javascript', src='/plugins/markdownEditor/ace.js')
-    //script(type='text/javascript', src='/plugins/markdownEditor/marked.min.js')
-    //script(type='text/javascript', src='/plugins/markdownEditor/bootstrap-markdown-editor.js')
+
     if (success || error)
       script.
         $("#alertMessage").fadeTo(2000, 1000).slideUp(1000, function () {
@@ -58,10 +55,10 @@ html
         });
         $(".close").click(function () {
           $("#alertMessage").alert();
-        }); 
+        });
 
       });
-      $(function (){ 
+      $(function (){
           $("[data-toggle='popover']").popover();
 
           $('[data-toggle="tooltip"]').tooltip();
