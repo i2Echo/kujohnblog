@@ -8,7 +8,7 @@ exports.getByPage = function (condition, currentPage, callback){
   //var currentPage = 1;
   var skipNum = (currentPage - 1)*pageSize;
   Article.count(query, function(err, count){
-    Article.find(query).skip(skipNum).limit(pageSize).sort(sort).exec(function(err, docs){
+    Article.find(query).populate('author', 'name').skip(skipNum).limit(pageSize).sort(sort).exec(function(err, docs){
       if (err){
         return callback(err);
       }

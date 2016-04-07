@@ -25,8 +25,8 @@ var uploadDir = './public/';
 //}
 
 var getProfile = function(req, res){
-  User.find({name: req.params.name}, function (err, user) {
-    console.log(req.params.name);
+  console.log("====ok");
+  User.findOne({name: req.params.name}, function (err, user) {
     var _name = req.params.name;
     if (!user) {
       req.flash('error', '用户不存在!');
@@ -39,13 +39,16 @@ var getProfile = function(req, res){
         console.log(err);
         return res.redirect('/');
       }
-      console.log('okkkk=====kkkkk');
+
+      console.log('===========');
       console.log(count);
+      console.log(user);
       res.render('profile', {
         title: req.params.name,
         isIndex: false,
         articles: docs,
-        user : user,
+        user : req.session.user,
+        visitUser: user,
         page: currentPage,
         count: count,
         pages: Math.ceil(count/PAGE_SIZE),
@@ -102,13 +105,14 @@ var setProfile_post = function (req, res){
         return res.redirect('/user/settings/profile');
       }
       if(req.files.profilePic && (req.session.user.profilePic!='/images/default-logo.png')){
-        console.log(req.session.user.profilePic);
+
         fs.unlink(uploadDir + req.session.user.profilePic, function(err){          
           if(err)
-            throw err;
+            //console.log(req.session.user.profilePic);
+            req.flash('error', 'Delete old picture failed!');
         });
       }
-      User.find({name: updates.name}, function (err, user) {
+      User.findOne({name: updates.name}, function (err, user) {
         req.session.user = user;
         req.flash('success', 'Update success!');
         res.redirect('/user/'+user.name);

@@ -17,11 +17,11 @@ var getTime = function() {
 };
 
 var articleSchema = new Schema({
-  name: String,
-  // name: {
-  //   type: ObjectId,
-  //   ref: 'User'
-  // },
+  //name: String,
+   author: {
+     type: ObjectId,
+     ref: 'User'
+   },
   title: String,
   content: String,
   pv: {
