@@ -1,33 +1,29 @@
-
 var User = require('../models/user.js');
-var Article = require('../models/article.js');
+var midFunction = require('./midFunction.js');
 var fs = require('fs');
 
 var PAGE_SIZE = 10;
 var uploadDir = './public/';
 
 var getProfile = function(req, res){
-  User.get(req.params.name, function (err, user) {
-    console.log(req.params.name);
+  User.findOne({name: req.params.name}, function (err, user) {
     if (!user) {
       req.flash('error', '用户不存在!');
       return res.redirect('/');
     }
     var currentPage = parseInt(req.params.page) || 1;
-
-    Article.getByPage(user.name, currentPage, function (err, count, docs) {
+    midFunction.getByPage({author: user._id}, currentPage, function (err, count, docs) {
       if (err) {
-        //req.flash('error', err);
+        req.flash('error', err);
         console.log(err);
         return res.redirect('/');
       }
-      console.log(user);
       res.render('profile', {
-        title: user.name,
+        title: req.params.name,
         isIndex: false,
         articles: docs,
-        visitUser : user,
-        user: req.session.user,
+        user : req.session.user,
+        visitUser: user,
         page: currentPage,
         count: count,
         pages: Math.ceil(count/PAGE_SIZE),
@@ -64,7 +60,7 @@ var setProfile_post = function (req, res){
   }
 
   console.log(updates);
-  User.get(updates.name, function (err, user) {
+  User.findOne({name: updates.name}, function (err, user) {
     if(user){
         if(user.name!=condition){//判断是否为它原name值
           req.flash('error', 'Username already exists');
@@ -84,19 +80,14 @@ var setProfile_post = function (req, res){
         return res.redirect('/user/settings/profile');
       }
       if(req.files.profilePic && (req.session.user.profilePic!='/images/default-logo.png')){
-        console.log(req.session.user.profilePic);
+
         fs.unlink(uploadDir + req.session.user.profilePic, function(err){          
           if(err)
-            throw err;
+            //console.log(req.session.user.profilePic);
+            req.flash('error', 'Delete old picture failed!');
         });
       }
-      Article.updateArticel({name: Ouser.name}, {name: updates.name}, function(err, callback){
-        if(err){
-          req.flash('error', 'Error, Try again');
-          return res.redirect('/user/settings/profile');
-        }
-      });
-      User.get(updates.name, function (err, user) {
+      User.findOne({name: updates.name}, function (err, user) {
         req.session.user = user;
         req.flash('success', 'Update success!');
         res.redirect('/user/'+user.name);

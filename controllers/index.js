@@ -1,12 +1,12 @@
-var Article = require('../models/article.js');
+var midFunction = require('./midFunction.js');
 
 var PAGE_SIZE = 10;
 
 module.exports = function (req, res) {
   var currentPage = parseInt(req.params.page) || 1;
 
-  Article.getByPage(null, currentPage, function(err, count, docs){
-
+  midFunction.getByPage(null, currentPage, function(err, count, docs){
+    console.log(docs[0].author.name);
     res.render('index', {
       title: 'Home',
       isIndex: true,

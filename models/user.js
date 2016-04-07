@@ -49,55 +49,7 @@ var userSchema = new Schema({
   collection: 'users'
 });
 
-var userModel = mongoose.model('User', userSchema);
-
-function User(user){
-  this.name = user.name;
-  this.password = user.password;
-  this.email = user.email;
-}
-
-User.prototype.save = function(callback){
-  var user ={
-    name: this.name,
-    password: this.password,
-    email: this.email
-  };
-
-  var newUser = new userModel(user);
-  newUser.save(function(err, user){
-    if(err){
-      return callback(err);
-    }
-    callback(null, user);
-  });
-};
-
-User.get = function(name, callback){
-  userModel.findOne({name: name}, function(err, user){
-    if(err){
-      return callback(err);
-    }
-    callback(null, user);
-  });
-};
-User.update = function(condition, updates, callback){
-  var update = {};
-  if(updates){
-    //update.name = updates.name;
-    //update.email = updates.email;
-    //update.profilePic = updates.profilePic;
-    //update.url = updates.url;
-    //update.location = updates.location;
-    update = updates;
-  }
-  userModel.findOneAndUpdate(condition, {$set: update}, function(err, user){
-    if(err){
-      return callback(err);
-    }
-    callback(null, user);
-  });
-}
+var User = mongoose.model('User', userSchema);
 
 module.exports = User;
 

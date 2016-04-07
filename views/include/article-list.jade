@@ -6,7 +6,7 @@ each article in articles
     .discrible
       span
         i.fa.fa-user
-        a.author.h5(href='/user/#{article.name}') #{article.name}
+        a.author.h5(href='/user/#{article.author.name}') #{article.author.name}
       span.post-time.pull-right
         i.fa.fa-clock-o
         | #{article.time}

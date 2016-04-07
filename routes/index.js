@@ -30,6 +30,5 @@ router.get('/:name/page/:page', user.getProfile);
 
 router.get('/user/settings/profile', checkLogin.isLogin, user.setProfile_get);
 router.post('/user/settings/profile', checkLogin.isLogin, user.setProfile_post);
-//router.post('/upload', checkLogin.isLogin, user.uploadProfilePic);
 
 module.exports = router;
