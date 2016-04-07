@@ -1,7 +1,6 @@
 
 var User = require('../models/user.js');
 var Article = require('../models/article.js');
-var multer  = require('multer');
 var fs = require('fs');
 
 var PAGE_SIZE = 10;
@@ -9,7 +8,7 @@ var uploadDir = './public/';
 
 var getProfile = function(req, res){
   User.get(req.params.name, function (err, user) {
-    //console.log(req.params.name);
+    console.log(req.params.name);
     if (!user) {
       req.flash('error', '用户不存在!');
       return res.redirect('/');
@@ -22,12 +21,13 @@ var getProfile = function(req, res){
         console.log(err);
         return res.redirect('/');
       }
-      //console.log(Math.ceil(count/2));
+      console.log(user);
       res.render('profile', {
         title: user.name,
         isIndex: false,
         articles: docs,
-        user : req.session.user,
+        visitUser : user,
+        user: req.session.user,
         page: currentPage,
         count: count,
         pages: Math.ceil(count/PAGE_SIZE),
