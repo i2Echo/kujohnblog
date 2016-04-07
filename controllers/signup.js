@@ -29,7 +29,7 @@ var regPost = function(req, res){
     password: password,
     email:req.body.email
   });
-  User.get(newUser.name, function (err, user) {
+  User.findOne({name: newUser.name}, function (err, user) {
     if(err){
       req.flash('error', err);
       return res.redirect('/')

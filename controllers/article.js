@@ -28,9 +28,9 @@ var getPost = function (req, res) {
 };
 
 var getOneArticle = function (req, res){
-  var _id = req.params._id;
+  var id = req.params._id;
   if (id.match(/^[0-9a-fA-F]{24}$/))
-    Article.getOne(_id,function(err, doc){
+    Article.findById({_id: id},function(err, doc){
       res.render('article', {
         title: req.params.title,
         user: req.session.user,

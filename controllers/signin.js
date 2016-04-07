@@ -25,7 +25,7 @@ var loginPost = function(req, res){
     name: name,
     password: password
   });
-  User.get(newUser.name, function (err, user) {
+  User.findOne({name: newUser.name}, function (err, user) {
     if(err){
       req.flash('error', err);
       return res.redirect('/')

@@ -1,33 +1,51 @@
 
 var User = require('../models/user.js');
-var Article = require('../models/article.js');
-var multer  = require('multer');
+var midFunction = require('./midFunction.js');
 var fs = require('fs');
 
 var PAGE_SIZE = 10;
 var uploadDir = './public/';
 
+//User.update = function(condition, updates, callback){
+//  var update = {};
+//  if(updates){
+//    //update.name = updates.name;
+//    //update.email = updates.email;
+//    //update.profilePic = updates.profilePic;
+//    //update.url = updates.url;
+//    //update.location = updates.location;
+//    update = updates;
+//  }
+//  User.findOneAndUpdate(condition, {$set: update}, function(err, user){
+//    if(err){
+//      return callback(err);
+//    }
+//    callback(null, user);
+//  });
+//}
+
 var getProfile = function(req, res){
-  User.get(req.params.name, function (err, user) {
-    //console.log(req.params.name);
+  User.find({name: req.params.name}, function (err, user) {
+    console.log(req.params.name);
+    var _name = req.params.name;
     if (!user) {
       req.flash('error', '用户不存在!');
       return res.redirect('/');
     }
     var currentPage = parseInt(req.params.page) || 1;
-
-    Article.getByPage(user.name, currentPage, function (err, count, docs) {
+    midFunction.getByPage({name: req.params.name}, currentPage, function (err, count, docs) {
       if (err) {
-        //req.flash('error', err);
+        req.flash('error', err);
         console.log(err);
         return res.redirect('/');
       }
-      //console.log(Math.ceil(count/2));
+      console.log('okkkk=====kkkkk');
+      console.log(count);
       res.render('profile', {
-        title: user.name,
+        title: req.params.name,
         isIndex: false,
         articles: docs,
-        user : req.session.user,
+        user : user,
         page: currentPage,
         count: count,
         pages: Math.ceil(count/PAGE_SIZE),
@@ -64,7 +82,7 @@ var setProfile_post = function (req, res){
   }
 
   console.log(updates);
-  User.get(updates.name, function (err, user) {
+  User.findOne({name: updates.name}, function (err, user) {
     if(user){
         if(user.name!=condition){//判断是否为它原name值
           req.flash('error', 'Username already exists');
@@ -90,13 +108,7 @@ var setProfile_post = function (req, res){
             throw err;
         });
       }
-      Article.updateArticel({name: Ouser.name}, {name: updates.name}, function(err, callback){
-        if(err){
-          req.flash('error', 'Error, Try again');
-          return res.redirect('/user/settings/profile');
-        }
-      });
-      User.get(updates.name, function (err, user) {
+      User.find({name: updates.name}, function (err, user) {
         req.session.user = user;
         req.flash('success', 'Update success!');
         res.redirect('/user/'+user.name);
