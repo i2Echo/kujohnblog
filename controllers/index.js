@@ -6,7 +6,7 @@ module.exports = function (req, res) {
   var currentPage = parseInt(req.params.page) || 1;
 
   midFunction.getByPage(null, currentPage, function(err, count, docs){
-    console.log(docs[0].author.name);
+
     res.render('index', {
       title: 'Home',
       isIndex: true,
