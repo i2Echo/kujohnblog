@@ -37,13 +37,21 @@ var getOneArticle = function (req, res){
   var id = req.params._id;
   if (id.match(/^[0-9a-fA-F]{24}$/))
     Article.findByIdAndUpdate({_id: id}, { $inc: { pv: 1 }}).populate('author', 'name').exec(function(err, doc){
-      console.log(doc.author)
-      res.render('article', {
-        title: req.params.title,
-        user: req.session.user,
-        article: doc,
-        success: req.flash('success').toString(),
-        error: req.flash('error').toString()
+      console.log(doc.time);
+      midFunction.getPre(doc._id,function(err,predocs){
+        midFunction.getNext(doc._id,function(err,nextdocs){
+          console.log("<<<"+predocs[0]);
+          console.log(">>>"+nextdocs[0]);
+          res.render('article', {
+            title: req.params.title,
+            user: req.session.user,
+            predoc: predocs?predocs[0]:null,
+            nextdoc: nextdocs?nextdocs[0]:null,
+            article: doc,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+          });
+        });
       });
     });
   else{

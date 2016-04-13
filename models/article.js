@@ -23,6 +23,7 @@ var articleSchema = new Schema({
      ref: 'User'
    },
   title: String,
+  category: String,
   content: String,
   pv: {
     type: Number,

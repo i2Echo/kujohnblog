@@ -26,3 +26,20 @@ exports.getCount = function(condition, callback){
     callback(null, count);
   });
 }
+
+exports.getNext = function(id, callback){
+  Article.find({_id: {$gt: id}}).sort({_id: 1}).limit(1).exec(function(err, docs){
+    if (err){
+      throw err;
+    }
+    return callback(null, docs);
+  });
+}
+exports.getPre = function(id, callback){
+  Article.find({_id: {$lt: id}}).sort({_id: -1}).limit(1).exec(function(err, docs){
+    if (err){
+      throw err;
+    }
+    return callback(null, docs);
+  });
+}

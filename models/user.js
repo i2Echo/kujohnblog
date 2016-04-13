@@ -27,7 +27,6 @@ var userSchema = new Schema({
     type: String,
     default: '未填写'
   },
-  //hashedPassword: String,
   //salt: String,
   // 0: normal user
   // 1: verified user

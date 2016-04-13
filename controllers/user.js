@@ -59,7 +59,7 @@ var setProfile_post = function (req, res){
     location: req.body.location || req.session.user.location
   }
 
-  console.log(updates);
+  //console.log(updates);
   User.findOne({name: updates.name}, function (err, user) {
     if(user){
         if(user.name!=condition){//判断是否为它原name值
