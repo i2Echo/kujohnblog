@@ -17,7 +17,7 @@ var userSchema = new Schema({
   password: String,
   profilePic: {
     type: String,
-    default: '/images/default-logo.png'
+    default: '/images/logo-default.png'
   },
   url:  {
     type: String,

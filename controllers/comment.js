@@ -1,14 +1,15 @@
-var Article = require('../models/article.js');
+var Comment = require('../models/comment.js');
 var midFunction = require('./midFunction.js');
 
-var savePost = function (req, res) {
-  if(!req.body.title||!req.body.content){
-    req.flash('error', '标题或内容未填写');
-    return res.redirect('/post');
+var saveCommentPost = function (req, res) {
+  if(req.body.info){
+    req.flash('error', '评论为空');
+    return res.redirect('back');
   }
   var currentUser = req.session.user,
-      article = new Article({
-        author: currentUser._id,
+      currentArticle = req.params.title,
+      comment = new Comment({
+        from: currentUser._id,
         title: req.body.title,
         category: req.body.category?req.body.category:"",
         content: req.body.content
@@ -44,7 +45,6 @@ var getOneArticle = function (req, res){
     Article.findByIdAndUpdate({_id: id}, { $inc: { pv: 1 }}).populate('author', 'name').exec(function(err, doc){
       midFunction.getPre(doc._id,function(err,predocs){
         midFunction.getNext(doc._id,function(err,nextdocs){
-          req.session
           res.render('article', {
             title: req.params.title,
             user: req.session.user,
@@ -64,7 +64,7 @@ var getOneArticle = function (req, res){
 };
 
 module.exports = {
-  savePost: savePost,
+  saveCommentPost: saveCommentPost,
   getPost: getPost,
   getOneArticle: getOneArticle
 };

@@ -15,7 +15,7 @@ var getProfile = function(req, res){
     midFunction.getByPage({author: user._id}, currentPage, function (err, count, docs) {
       if (err) {
         req.flash('error', err);
-        console.log(err);
+        //console.log(err);
         return res.redirect('/');
       }
       res.render('profile', {
@@ -83,8 +83,8 @@ var setProfile_post = function (req, res){
 
         fs.unlink(uploadDir + req.session.user.profilePic, function(err){          
           if(err)
-            //console.log(req.session.user.profilePic);
-            req.flash('error', 'Delete old picture failed!');
+            console.log(req.session.user.profilePic);
+            //req.flash('error', 'Delete old picture failed!');
         });
       }
       User.findOne({name: updates.name}, function (err, user) {

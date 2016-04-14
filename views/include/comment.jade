@@ -1,0 +1,23 @@
+- var comments = [{"from": "echo","time":"2016-4-1","content":"good"},{"from": "66o","time":"2016-4-16","content":"gooooood"}]
+.comment.box-style
+  .write-comment
+    form(method='post', action='/comment')
+      .form-group
+        label(for="comment") Reply
+        textarea.form-control#comment(cols="3", name="info")
+      button.btn.btn-success.post-btn.btn-block.max-w300.m15-a(type='submit') Reply
+  .comment-list
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title 23 reply
+      .list-group
+      each comment in comments
+        .list-group-item
+          .user-info.clearfix
+            a.pull-left
+              img.pull-left.img-circle(width='30', height='30', src='/images/logo-default.png')
+            .comment-mate.pull-left
+              a.from(href="#") #{comment.from}
+              span.time #{comment.time}
+          .comment-info
+            p #{comment.content}

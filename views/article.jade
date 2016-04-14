@@ -1,7 +1,7 @@
 extends include/iframeCom
 
 block content
-  .content-box.container-fluid
+  .content-box.container-fluid.box-style
     .box-title.art-title
       p.text-center #{article.title}
     .discrible
@@ -20,7 +20,7 @@ block content
     .box-foot.row
       .archive.col-sm-3
         i.fa.fa-folder
-        span python
+        span #{article.category}
       .tag.col-sm-9
         i.fa.fa-tags
         span tags
@@ -38,6 +38,6 @@ block content
           li.next
             a(href='/article/#{nextdoc._id}') Next &nbsp;
               span.fa.fa-chevron-right(aria-hidden="true")
-
+  include include/comment
 block sidebar
   include include/sidebar
