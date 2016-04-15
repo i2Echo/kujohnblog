@@ -46,11 +46,12 @@ var setProfile_get = function (req, res){
 }
 var setProfile_post = function (req, res){
   var condition = req.session.user.name;
-  if(!req.body.name){
+  var _name = req.body.name && req.body.name.trim();
+  if(!_name){
     req.flash('error','Username can not be null');
     return res.redirect('/user/settings/profile');
   }
-  console.log(req.body);
+  //console.log(req.body);
   var updates = {
     name: req.body.name || req.session.user.name,
     email: req.body.email || req.session.user.email,
@@ -62,7 +63,7 @@ var setProfile_post = function (req, res){
   //console.log(updates);
   User.findOne({name: updates.name}, function (err, user) {
     if(user){
-        if(user.name!=condition){//判断是否为它原name值
+        if(user.name!=condition){//判断是否为它原name值,就是同原名允许改
           req.flash('error', 'Username already exists');
           return res.redirect('/user/settings/profile');
         }
