@@ -7,6 +7,7 @@ var login = require('../controllers/signin.js');
 var checkLogin = require('../controllers/checkLogin.js');
 var article = require('../controllers/article.js');
 var user = require('../controllers/user.js');
+var comment = require('../controllers/comment.js');
 
 /* GET home page. */
 router.get('/', index);
@@ -24,7 +25,7 @@ router.get('/post', checkLogin.isLogin, article.getPost);
 router.post('/post', checkLogin.isLogin, article.savePost);
 
 router.get('/article/:_id', article.getOneArticle);
-//router.post('/article/:_id', article.getOneArticle);
+router.post('/comment', checkLogin.isLogin, comment.saveCommentPost);
 
 router.get('/user/:name', user.getProfile);
 router.get('/:name/page/:page', user.getProfile);

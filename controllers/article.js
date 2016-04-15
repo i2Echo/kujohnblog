@@ -1,5 +1,6 @@
 var Article = require('../models/article.js');
 var midFunction = require('./midFunction.js');
+var comment = require('./comment.js');
 
 var savePost = function (req, res) {
   if(!req.body.title||!req.body.content){
@@ -14,7 +15,6 @@ var savePost = function (req, res) {
         content: req.body.content
       });
 
-  //console.log(article.author);
   article.save(function (err) {
     if (err) {
       req.flash('error', err);
@@ -26,7 +26,6 @@ var savePost = function (req, res) {
 };
 
 var getPost = function (req, res) {
-
   midFunction.getCount({author: req.session.user._id},function(err, count){
     res.render('post', {
       title: 'Post',
@@ -44,15 +43,20 @@ var getOneArticle = function (req, res){
     Article.findByIdAndUpdate({_id: id}, { $inc: { pv: 1 }}).populate('author', 'name').exec(function(err, doc){
       midFunction.getPre(doc._id,function(err,predocs){
         midFunction.getNext(doc._id,function(err,nextdocs){
-          req.session
-          res.render('article', {
-            title: req.params.title,
-            user: req.session.user,
-            predoc: predocs?predocs[0]:null,
-            nextdoc: nextdocs?nextdocs[0]:null,
-            article: doc,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString()
+          comment.getComment({to: id},function(err, count, comments){
+            //console.log(comments[0].from);
+            req.session.art_id = doc._id;
+            res.render('article', {
+              title: req.params.title,
+              user: req.session.user,
+              predoc: predocs?predocs[0]:null,
+              nextdoc: nextdocs?nextdocs[0]:null,
+              article: doc,
+              comentCount: count,
+              comments: comments,
+              success: req.flash('success').toString(),
+              error: req.flash('error').toString()
+            });
           });
         });
       });
