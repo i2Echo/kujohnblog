@@ -23,7 +23,7 @@
               a.pull-left
                 img.pull-left.img-circle(width='30', height='30', src='#{comment.from.profilePic}')
               .comment-mate.pull-left
-                a.from(href="#") #{comment.from.name}
+                a.from(href="/user/#{article.author.name}") #{comment.from.name}
                 span.time #{comment.time}
             .comment-info
               p #{comment.content}
