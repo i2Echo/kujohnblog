@@ -17,7 +17,7 @@ var userSchema = new Schema({
   password: String,
   profilePic: {
     type: String,
-    default: '/images/default-logo.png'
+    default: '/images/logo-default.png'
   },
   url:  {
     type: String,
@@ -27,7 +27,6 @@ var userSchema = new Schema({
     type: String,
     default: '未填写'
   },
-  //hashedPassword: String,
   //salt: String,
   // 0: normal user
   // 1: verified user

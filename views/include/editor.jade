@@ -1,10 +1,10 @@
-.container-fluid.write-article
+.container-fluid.write-article.box-style
   form(method='post', action='/post')
     .form-group
       label(for='title') Title
       input.form-control#title(type='text',placeholder='Title',name="title",autofocus="autofocus")
     .form-group
-      label(for='content') tag
-      input.form-control#content(type='text',placeholder='Tag',name="tag")
+      label(for='content') category
+      input.form-control#content(type='text',placeholder='category',name="category")
     textarea#summernote(name="content")
     button.btn.btn-success.post-btn.btn-block(type='submit') Post your article

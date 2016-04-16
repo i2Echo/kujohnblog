@@ -1,5 +1,5 @@
 each article in articles
-  .content-box.container-fluid
+  .content-box.container-fluid.box-style
     .box-title.list-title
       a.hove-style(href='/article/#{article._id}')
         span #{article.title}
@@ -24,7 +24,7 @@ each article in articles
           span #{article.pv}
       .archive.col-sm-3
         i.fa.fa-folder
-        span python
+        span #{article.category}
       .tag.col-sm-6
         i.fa.fa-tags
         span tags

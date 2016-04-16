@@ -1,0 +1,32 @@
+
+.comment.box-style
+  .write-comment
+    if(user)
+      form(method='post', action='/comment')
+        .form-group
+          label(for="comment") Reply
+          textarea.form-control#comment(cols="3", name="info")
+        button.btn.btn-success.post-btn.btn-block.max-w300.m15-a(type='submit') Reply
+    else
+      p 请
+        a(href="/signin") 登录
+        | 后发表评论
+  .comment-list
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title #{comentCount} reply
+      .list-group
+      if comments
+        each comment in comments
+          .list-group-item
+            .user-info.clearfix
+              a.pull-left
+                img.pull-left.img-circle(width='30', height='30', src='#{comment.from.profilePic}')
+              .comment-mate.pull-left
+                a.from(href="/user/#{article.author.name}") #{comment.from.name}
+                span.time #{comment.time}
+            .comment-info
+              p #{comment.content}
+      else
+        .list-group-item
+          p 暂无评论

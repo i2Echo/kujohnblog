@@ -1,7 +1,7 @@
 extends include/iframeCom
 
 block content
-  .content-box.container-fluid
+  .content-box.container-fluid.box-style
     .box-title.art-title
       p.text-center #{article.title}
     .discrible
@@ -20,7 +20,7 @@ block content
     .box-foot.row
       .archive.col-sm-3
         i.fa.fa-folder
-        span python
+        span #{article.category}
       .tag.col-sm-9
         i.fa.fa-tags
         span tags
@@ -29,13 +29,15 @@ block content
       //  span #{article.pv}
     nav
       ul.pager
-        li.previous
-          a(href='#')
-            span.fa.fa-chevron-left(aria-hidden="true")
-            | &nbsp; Previous
-        li.next
-          a(href='#') Next &nbsp;
-            span.fa.fa-chevron-right(aria-hidden="true")
-
+        if predoc
+          li.previous
+            a(href='/article/#{predoc._id}')
+              span.fa.fa-chevron-left(aria-hidden="true")
+              | &nbsp; Previous
+        if nextdoc
+          li.next
+            a(href='/article/#{nextdoc._id}') Next &nbsp;
+              span.fa.fa-chevron-right(aria-hidden="true")
+  include include/comment
 block sidebar
   include include/sidebar

@@ -1,4 +1,4 @@
-//article schema
+//comment schema
 
 'use strict';
 
@@ -16,26 +16,28 @@ var getTime = function() {
   return time;
 };
 
-var articleSchema = new Schema({
-  //name: String,
-   author: {
-     type: ObjectId,
-     ref: 'User'
-   },
-  title: String,
-  category: String,
-  content: String,
-  pv: {
-    type: Number,
-    default: 0
+var commentSchema = new Schema({
+
+  from: {
+    type: ObjectId,
+    ref: 'User'
   },
+  to: {
+    type: ObjectId,
+    ref: 'Article'
+  },
+  reply:{
+    type: ObjectId,
+    ref: 'Comment'
+  },
+  content: String,
   time:{
     type: String,
     default: getTime
   }},{
-  collection: 'articles'
+  collection: 'comments'
 });
 
-var Article = mongoose.model('Article', articleSchema);
+var Comment = mongoose.model('Comment', commentSchema);
 
-module.exports = Article;
+module.exports = Comment;

@@ -7,7 +7,7 @@ header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
         span.icon-bar
         span.icon-bar
       if user
-        a.navbar-brand#logo-img(href='/user/#{user.name}',title="#{user.name}", data-container="body", data-toggle="popover", data-trigger="hover", data-placement="bottom", data-content="")
+        a.navbar-brand#logo-img(href='/user/#{user.name}',title="#{user.name}", data-container="body", data-toggle="popover", data-trigger="hover", data-placement="bottom", data-content="点击进入个人中心")
           img.img-circle(width='40', height='40', src='#{user.profilePic}')
 
     .collapse.navbar-collapse#bs-navbar
