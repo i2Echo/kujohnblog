@@ -11,8 +11,8 @@ var regGet = function(req, res){
 };
 
 var regPost = function(req, res){
-  var name = req.body.name,
-      apassword = req.body.password,
+  var name = req.body.name && req.body.name.trim(),
+      apassword = req.body.password && req.body.password,
       password_re = req.body['password-repeat'];
   if (!name||!apassword||!password_re){
     req.flash('error','Please input all fields');
