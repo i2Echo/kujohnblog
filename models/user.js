@@ -27,16 +27,6 @@ var userSchema = new Schema({
     type: String,
     default: '未填写'
   },
-  //salt: String,
-  // 0: normal user
-  // 1: verified user
-  // 2: professional user
-  // >10: admin
-  // >50: super admin
-  //role: {
-  //  type: Number,
-  //  default: 0
-  //},
   created:{
     type: Date,
     default: Date.now
