@@ -1,7 +1,12 @@
 extends include/iframeProfile
 
 block content
-  include include/profileSet
+  if title == 'profileSet'
+    include include/profileSet
+  if title == 'articleManage'
+    include include/articleManage
+  if title == 'articleUpdate'
+    include include/articleUpdate
 
 block sidebar
   include include/settingSide

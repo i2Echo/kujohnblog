@@ -1,6 +1,49 @@
 .panel.panel-default.profile-panel
   .panel-heading
     h1.panel-title Article list
-  table.table
+  .table-responsive.p15
+    table.table.table-hover.table-striped.text-center
+      thead
+        tr.item
+          th Title
+          th Time
+          th Operation
+      for article in articles
+        tr
+          td #{article.title}
+          td #{article.time}
+          td
+            a.m0-5(href='/article/#{article._id}') View
+            a.m0-5(href='/article/#{article._id}') Update
+            a.m0-5(href='/articleManage/delArticle/#{article._id}') Delete
 
+//#delete.modal.fade(tabindex='-1',role='dialog',aria-labelledby="delModalLabel",aria-hidden="true")
+//  .modal-dialog
+//    .modal-content
+//        .modal-header
+//          button.close(type="button", data-dismiss="modal",aria-hidden="true")
+//            span.fa.fa-close
+//          h3.modal-title Delete article
+//        .modal-body
+//          p Confirm delete the article
+//        .modal-footer
+//          a.btn.btn-default(href="", data-dismiss="modal") Cancel
+//          a.btn.btn-info(href="/articleManage/delArticle/#{article._id}" data-dismiss="modal") Confirm
 
+nav.text-center
+  if pages > 1
+    ul.pagination
+      if !isFirstPage
+        li
+          a(href='/user/settings/articleManage/#{page-1}', aria-label="Previous")
+            span(aria-hidden="true") &laquo;
+      - for (var i=1; i<=pages; i++){
+      - var isActive = (page == i) ? 'active': ''
+      li(class='#{isActive}')
+        a(href='/user/settings/articleManage/#{i}') #{i}
+          span.sr-only
+      - }
+      if !isLastPage
+        li
+          a(href='/user/settings/articleManage/#{page+1}', aria-label="Next")
+            span(aria-hidden="true") &raquo;

@@ -3,11 +3,11 @@
     h1.panel-title Profile setting
   .panel-body
     form(method='post',enctype='multipart/form-data').profile-form
-      dl
-        dt Profile picture
-        dd.clearfix
+      .hd
+        h5 Profile picture
+        .clearfix
           img.pull-left.img-circle(width='80', height='80', src='#{user.profilePic}')
-          .upload-picture.pull-left
+          .upload-picture
             a.btn.btn-default(href='#')
               label(for='uplaod-profile-picture') Upload new picture
                 input.upload-file-btn#uplaod-profile-picture(type='file', name='profilePic')
