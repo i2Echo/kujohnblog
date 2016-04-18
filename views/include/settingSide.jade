@@ -2,6 +2,6 @@
   .panel-heading
     h1.panel-title Profile setting
   .list-group.set-item
-    a.list-group-item.active(href='/user/settings/profile') Profile
-    a.list-group-item(href='#') Manage article
+    a.list-group-item(href='/user/settings/profile',class="#{title == 'profileSet' ? 'active': ''}") Profile
+    a.list-group-item(href='/user/settings/articleManage',class="#{title == 'articleManage' ? 'active': ''}") Manage article
     a.list-group-item(href='#') Password

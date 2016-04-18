@@ -13,6 +13,13 @@ var comment = require('../controllers/comment.js');
 router.get('/', index);
 router.get('/page/:page', index);
 
+router.get('/about', function(req,res){
+  res.render('about',{
+    title: 'About',
+    user: req.session.user
+  });
+});
+
 router.get('/signup', checkLogin.notLogin, reg.regGet);
 router.post('/signup', checkLogin.notLogin, reg.regPost);
 
@@ -29,6 +36,12 @@ router.post('/comment', checkLogin.isLogin, comment.saveCommentPost);
 
 router.get('/user/:name', user.getProfile);
 router.get('/:name/page/:page', user.getProfile);
+
+router.get('/user/settings/articleManage', checkLogin.isLogin,article.getArticleManage);
+router.get('/user/settings/articleManage/:page', checkLogin.isLogin,article.getArticleManage);
+router.get('/articleManage/delArticle/:art_id', checkLogin.isLogin,article.delArticle);
+
+router.get('/search',article.searchArticle);
 
 router.get('/user/settings/profile', checkLogin.isLogin, user.setProfile_get);
 router.post('/user/settings/profile', checkLogin.isLogin, user.setProfile_post);

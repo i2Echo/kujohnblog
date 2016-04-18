@@ -7,12 +7,19 @@ body {
   padding-top: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+table{border-bottom:1px solid #f3f3f3;}
+.m0-5{margin: 0 5px;}
 .max-w300{ max-width: 300px;}
 .m15-a{ margin: 15px auto;}
-a {
-  color: #4078c0;
+.p15{padding: 15px;}
+.mt20{margin-top: 20px;}
+a {color: #4078c0;}
+.table>thead>tr.item>th {
+  border-bottom: 2px solid #337ab7;
+  text-align: center;
 }
+
+.table>tbody>tr>td{vertical-align: middle!important;}
 .upload-file-btn{
   position: absolute;
   left: 0;
@@ -30,7 +37,7 @@ a {
   margin-left: 10px;
 }
 .upload-picture{
-  margin-left: 20px;
+  margin-left: 80px;
 }
 /*.set-item a.list-group-item{*/
   /*color: #4078c0;*/
@@ -45,10 +52,16 @@ a {
   color: #d45658;
   text-decoration: none;
 }
-
+.head-mate{
+  min-width: 110px;
+  height: 50px;
+  color: #fff;
+  line-height: 50px;
+  margin-left: 5px;
+}
 a#logo-img{
   padding: 5px 10px;
-  margin-right: 90px;
+  margin-right: 60px;
 }
 
 .head-img{
@@ -89,6 +102,7 @@ img.fixed-bg{
 .sign-box{
   max-width: 450px;
   margin: 0 auto;
+  background-color: #fff;
 }
 form.modal-body{
   margin-bottom: 20px;
@@ -101,7 +115,7 @@ form.modal-body{
 }
 
 .main{
-  background-color: #f2f2f3;
+  background-color: #e9e9e9;
   padding-top: 20px;
 }
 @media (min-width: 768px){
@@ -140,15 +154,15 @@ div.blog-main{
 }
 .box-style{
   background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.1);
-  -moz-box-shadow: 0 2px 4px rgba(0,0,0,.1);
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
   border-radius: 2px;
 }
 .box-style:hover{
-  -webkit-box-shadow: 0 4px 8px rgba(0,0,0,.4);
-  -moz-box-shadow: 0 4px 8px rgba(0,0,0,.4);
-  box-shadow: 0 4px 8px rgba(0,0,0,.4);
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.4);
+  -moz-box-shadow: 0 2px 4px rgba(0,0,0,.4);
+  box-shadow: 0 2px 4px rgba(0,0,0,.4);
   border-radius: 2px;
 }
 

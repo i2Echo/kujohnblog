@@ -38,7 +38,7 @@ var getProfile = function(req, res){
 
 var setProfile_get = function (req, res){
   res.render('userSetting', {
-    title: 'profileSettings',
+    title: 'profileSet',
     user : req.session.user,
     success : req.flash('success').toString(),
     error : req.flash('error').toString()

@@ -1,6 +1,9 @@
 var Article = require('../models/article.js');
+var User = require('../models/user.js');
 var midFunction = require('./midFunction.js');
 var comment = require('./comment.js');
+
+const PAGE_SIZE = 10;
 
 var savePost = function (req, res) {
   if(!req.body.title||!req.body.content){
@@ -66,9 +69,67 @@ var getOneArticle = function (req, res){
     res.redirect('back');
   }
 };
+var getArticleManage = function(req, res){
+  User.findOne({name: req.session.user.name}, function (err, user) {
+    if (!user){
+      req.flash('error', '用户不存在!');
+      return res.redirect('/');
+    }
+    var currentPage = parseInt(req.params.page) || 1;
+    midFunction.getByPage({author: user._id}, currentPage, function (err, count, docs) {
+      if (err) {
+        req.flash('error', err);
+        //console.log(err);
+        return res.redirect('back');
+      }
+      res.render('userSetting', {
+        title: 'articleManage',
+        articles: docs,
+        user : req.session.user,
+        page: currentPage,
+        count: count,
+        pages: Math.ceil(count/PAGE_SIZE),
+        isFirstPage: (currentPage-1)==0,
+        isLastPage: ((currentPage-1) * PAGE_SIZE + docs.length) == count,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      });
+    });
+  });
+};
+var delArticle = function(req, res){
+  Article.findOneAndRemove({_id: req.params.art_id}).exec(function(err, callback){
+    if (err) {
+      req.flash('error', err);
+      return res.redirect('back');
+    }
+    req.flash('success', '文章删除成功');
+    return res.redirect('back');
+  });
+}
+var searchArticle = function(req, res){
+  var query = new RegExp(req.query.search, 'i');
+  Article.find({ '$or' : [{ 'title' : query }, {'content' : query}]}).populate('author', 'name').exec(function (err, docs) {
+    if (err) {
+      req.flash('error', err);
+      return res.redirect('back');
+    }
+    res.render('search', {
+      title: 'search',
+      articles: docs,
+      user: req.session.user,
+      count: docs.length,
+      success : req.flash('success').toString(),
+      error : req.flash('error').toString()
+    });
+  });
+}
 
 module.exports = {
   savePost: savePost,
   getPost: getPost,
-  getOneArticle: getOneArticle
+  getOneArticle: getOneArticle,
+  getArticleManage: getArticleManage,
+  delArticle: delArticle,
+  searchArticle: searchArticle
 };
