@@ -4,6 +4,8 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var moment = require('moment');
+var getTime = function(){return moment().format('YYYY-MM-DD HH:mm:ss');};
 
 var userSchema = new Schema({
   name: {
@@ -28,12 +30,12 @@ var userSchema = new Schema({
     default: '未填写'
   },
   created:{
-    type: Date,
-    default: Date.now
+    type: String,
+    default: getTime
   },
   updated:{
-    type: Date,
-    default: Date.now
+    type: String,
+    default: getTime
   }},{
   collection: 'users'
 });

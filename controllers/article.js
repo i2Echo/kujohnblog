@@ -3,6 +3,7 @@ var User = require('../models/user.js');
 var midFunction = require('./midFunction.js');
 var comment = require('./comment.js');
 
+var moment = require('moment');
 const PAGE_SIZE = 10;
 
 var savePost = function (req, res) {
@@ -124,6 +125,9 @@ var searchArticle = function(req, res){
     });
   });
 }
+//var getArchives = function(req, res){
+//  Article.find()
+//}
 
 module.exports = {
   savePost: savePost,
