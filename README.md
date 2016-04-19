@@ -3,7 +3,7 @@ mongodb+express+bootstrap+node
 
 ##Started
 
-###Install
+###Installed
 ```
 git clone https://github.com/i2Echo/kujohnblog.git
 ```
