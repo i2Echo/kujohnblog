@@ -13,6 +13,8 @@ var comment = require('../controllers/comment.js');
 router.get('/', index);
 router.get('/page/:page', index);
 
+router.get('/archives', article.getArchives);
+
 router.get('/about', function(req,res){
   res.render('about',{
     title: 'About',

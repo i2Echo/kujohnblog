@@ -1,0 +1,33 @@
+extends include/iframeProfile
+
+block content
+  .archives.box-style
+    - var lastYear = 0,other = 'mt20'
+    for article in articles
+      .archive-view.container-fluid.clearfix(class="#{other}")
+        .archive-year.pull-left
+          if lastYear != article.time.year
+            if lastYear != 0
+              - other = 'mt20'
+            - lastYear = article.time.year
+            a #{article.time.year}
+        .archive-list.clearfix
+          .archive-title.pull-left
+            a #{article.title}
+          .archive-mate.pull-right
+            span #{article.time.full}
+
+
+block sidebar
+  .panel.panel-default.side-panel
+    .panel-heading
+      h1.panel-title Archives
+    .list-group.set-item
+      - var lastYear = 0,countAll=0,count=0
+      for article in articles
+        - countAll++
+        if article.time.year != lastYear
+          - count++
+          - lastYear = article.time.year, lastMonth = article.time.month
+          a.list-group-item(href='#') #{article.time.year+'-'+article.time.month}
+            span.badge #{countAll-count}

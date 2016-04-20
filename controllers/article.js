@@ -48,7 +48,7 @@ var getOneArticle = function (req, res){
       midFunction.getPre(doc._id,function(err,predocs){
         midFunction.getNext(doc._id,function(err,nextdocs){
           comment.getComment({to: id},function(err, count, comments){
-            //console.log(comments[0].from);
+            console.log(doc.time.year);
             req.session.art_id = doc._id;
             res.render('article', {
               title: req.params.title,
@@ -125,9 +125,22 @@ var searchArticle = function(req, res){
     });
   });
 }
-//var getArchives = function(req, res){
-//  Article.find()
-//}
+var getArchives = function(req, res){
+  Article.find().populate('author', 'name').sort({time: -1}).exec(function (err, docs) {
+    if (err) {
+      req.flash('error', err);
+      return res.redirect('/');
+    }
+    console.log(docs);
+    res.render('archives', {
+      title: 'Archives',
+      articles: docs,
+      user: req.session.user,
+      success : req.flash('success').toString(),
+      error : req.flash('error').toString()
+    });
+  });
+}
 
 module.exports = {
   savePost: savePost,
@@ -135,5 +148,6 @@ module.exports = {
   getOneArticle: getOneArticle,
   getArticleManage: getArticleManage,
   delArticle: delArticle,
-  searchArticle: searchArticle
+  searchArticle: searchArticle,
+  getArchives: getArchives
 };

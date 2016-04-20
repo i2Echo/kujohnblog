@@ -16,49 +16,49 @@ html
     <![endif]-->
 
   body
-    include include/modalSignWindow
-    include include/header
-    .head-img
-      img.fixed-bg(src='/images/bg.jpg')
-    .main.container-fluid
-      .container
-        block iframe
-      footer.bs-footer.pull-left
-        p.copyright.text-center Powered by <a id='author' href='#'>echo</a> &copy;2016
+    .wallpaper
+      include include/modalSignWindow
+      include include/header
+      .head-img
+        img.fixed-bg(src='/images/bg.jpg')
+      .main.container-fluid
+        .container
+          block iframe
+      include include/footer
     #totop(style="opacity: 1; display: block;")
       a(title="返回顶部")
         img(src='/images/scrollup.png')
 
-    //script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
-    script(type='text/javascript', src='//cdn.bootcss.com/jquery/2.1.4/jquery.min.js')
-    script.
-      window.jQuery || document.write('<script src="/javascripts/jquery-2.1.4.min.js"><\/script>')
-
-    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
-    script(type='text/javascript', src='/javascripts/totop.js')
-    script(type='text/javascript', src='/plugins/summernote/summernote.js')
-
-    if (success || error)
+      //script(type='text/javascript', src='/javascripts/jquery-1.12.1.js')
+      script(type='text/javascript', src='//cdn.bootcss.com/jquery/2.1.4/jquery.min.js')
       script.
-        $("#alertMessage").fadeTo(2000, 1000).slideUp(1000, function () {
-          $("#alertMessage").alert('close');
-        });
-    script.
-      $(document).ready(function(){
-        $('#summernote').summernote({
-          height: 150,
-          codemirror: { // codemirror options
-            theme: 'monokai'
-          },
-          placeholder: 'write here...'
-        });
-        $(".close").click(function () {
-          $("#alertMessage").alert();
-        });
+        window.jQuery || document.write('<script src="/javascripts/jquery-2.1.4.min.js"><\/script>')
 
-      });
-      $(function (){
-          $("[data-toggle='popover']").popover();
+      script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+      script(type='text/javascript', src='/javascripts/totop.js')
+      script(type='text/javascript', src='/plugins/summernote/summernote.js')
 
-          $('[data-toggle="tooltip"]').tooltip();
-      });
+      if (success || error)
+        script.
+          $("#alertMessage").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#alertMessage").alert('close');
+          });
+      script.
+        $(document).ready(function(){
+          $('#summernote').summernote({
+            height: 150,
+            codemirror: { // codemirror options
+              theme: 'monokai'
+            },
+            placeholder: 'write here...'
+          });
+          $(".close").click(function () {
+            $("#alertMessage").alert();
+          });
+
+        });
+        $(function (){
+            $("[data-toggle='popover']").popover();
+
+            $('[data-toggle="tooltip"]').tooltip();
+        });

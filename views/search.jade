@@ -13,7 +13,7 @@ block content
           a.author.h5(href='/user/#{article.author.name}') #{article.author.name}
         span.post-time.pull-right
           i.fa.fa-clock-o
-          | #{article.time}
+          | #{article.time.full}
       .box-body
 
         .article-list !{article.content}

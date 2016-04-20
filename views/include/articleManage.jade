@@ -11,7 +11,7 @@
       for article in articles
         tr
           td #{article.title}
-          td #{article.time}
+          td #{article.time.full}
           td
             a.m0-5(href='/article/#{article._id}') View
             a.m0-5(href='/article/#{article._id}') Update

@@ -2,24 +2,31 @@
   margin: 0;
   padding: 0;
 }
-
 body {
   padding-top: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-table{border-bottom:1px solid #f3f3f3;}
+
 .m0-5{margin: 0 5px;}
 .max-w300{ max-width: 300px;}
 .m15-a{ margin: 15px auto;}
 .p15{padding: 15px;}
 .mt20{margin-top: 20px;}
 a {color: #4078c0;}
+/*table style*/
+table{border-bottom:1px solid #f3f3f3;}
 .table>thead>tr.item>th {
   border-bottom: 2px solid #337ab7;
   text-align: center;
 }
-
 .table>tbody>tr>td{vertical-align: middle!important;}
+
+/*alert*/
+#alertMessage{
+  margin-bottom: 0;
+  text-align: center;
+}
+
 .upload-file-btn{
   position: absolute;
   left: 0;
@@ -81,16 +88,8 @@ img.fixed-bg{
   z-index: -1;
 }
 
-/*alert*/
-#alertMessage{
-  margin-bottom: 0;
-  text-align: center;
-}
-
 /*user login*/
-#user{
-  padding: 0 20px;
-}
+
 #user .btn{
   width: 80px;
   margin-right: 5px;
@@ -114,8 +113,11 @@ form.modal-body{
   margin-top: 20px;
 }
 
-.main{
+.wallpaper{
+  width: 100%;
   background-color: #e9e9e9;
+}
+.main{
   padding-top: 20px;
 }
 @media (min-width: 768px){
@@ -132,6 +134,47 @@ div.blog-main{
   padding: 0;
 }
 
+.footer.navbar{
+  min-height: 100px;
+  margin-top: 60px;
+  margin-bottom: 0;
+  background-color: #fff;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.footer ul>li{
+  line-height: 100px;
+}
+
+@media (max-width: 767px){
+  .footer .navbar-nav li{
+    line-height: 30px;
+  }
+  .footer .navbar-nav li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+  }
+  .footer .navbar-nav{
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+.footer .navbar-nav{
+  float: none;
+  margin: 0 auto;
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+}
+.footer ul.nav>li>a{
+  /*padding: 40px auto;*/
+  display: inline;
+}
 /*content*/
 .text-indent{
   text-indent: 2em;
@@ -160,9 +203,9 @@ div.blog-main{
   border-radius: 2px;
 }
 .box-style:hover{
-  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.4);
-  -moz-box-shadow: 0 2px 4px rgba(0,0,0,.4);
-  box-shadow: 0 2px 4px rgba(0,0,0,.4);
+  -webkit-box-shadow: 0 0 2px 4px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 0 2px 4px rgba(0,0,0,.1);
+  box-shadow: 0 0 2px 4px rgba(0,0,0,.1);
   border-radius: 2px;
 }
 
@@ -337,10 +380,8 @@ div.page-sidebar {
   margin-left: 40px;
 }
 
-/*footer*/
-.bs-footer{
-  width: 100%;
-  margin: 50px auto;
+.archives .archive-list{
+  margin-left: 100px;
 }
 
 #totop{
