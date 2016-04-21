@@ -22,9 +22,11 @@ header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
         li(class="#{title=='About'?'active':''}")
           a(href='/about') About
       form.navbar-form.navbar-left(role="search", action="/search", method='get')
-        .form-group
-          input(type="text", class="form-control", name="search" placeholder="Search")
-          //button.btn.btn-default.m0-5(type="submit") Submit
+        .input-group
+          input.form-control(type="text", name="search", placeholder="Search")
+          span.input-group-btn
+            button.btn.btn-flat.search-btn(type="submit")
+              i.fa.fa-search
       .nav.navbar-nav.navbar-right.text-center#user
         if !user
           button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login') Sign in
