@@ -3,9 +3,9 @@ extends include/iframeProfile
 
 block content
   .archives.box-style
-    - var articless = [{'time':{'year':'2016','month':'7','day':'11'}},{'time':{'year':'2016','month':'11','day':'11'}},{'time':{'year':'2016','month':'11','day':'12'}}]
+    //- var articless = [{'time':{'year':'2016','month':'7','day':'11'}},{'time':{'year':'2016','month':'11','day':'11'}},{'time':{'year':'2016','month':'11','day':'12'}}]
     - var lastYear = 0,lastMonth=0
-    for article,i in articless
+    for article,i in articles
       - var isNew = false
       if lastMonth != article.time.month || lastYear != article.time.year
         - isNew = true
@@ -17,7 +17,7 @@ block content
           - lastMonth = article.time.month
         .archive-list.clearfix(class="#{(!isNew) ? 'bd-top':''}")
           .archive-title.pull-left
-            a #{article.time.day}
+            a #{article.title}
           .archive-mate.pull-right
             i.fa.fa-calendar.m0-5
             span #{article.time.month + '-' + article.time.day}
