@@ -223,10 +223,10 @@ div.blog-main{
   border-radius: 2px;
 }
 .box-style:hover{
-  -webkit-box-shadow: 0 0 2px 4px rgba(0,0,0,.1);
-  -moz-box-shadow: 0 0 2px 4px rgba(0,0,0,.1);
-  box-shadow: 0 0 2px 4px rgba(0,0,0,.1);
-  border-radius: 2px;
+  -webkit-box-shadow: 0 0 2px 3px rgba(0,0,0,.1);
+  -moz-box-shadow: 0 0 2px 3px rgba(0,0,0,.1);
+  box-shadow: 0 0 2px 3px rgba(0,0,0,.1);
+  /*border-radius: 2px;*/
 }
 
 .box-title{
