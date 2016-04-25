@@ -1,43 +1,7 @@
 extends include/iframeCom
 
 block content
-  .content-box.container-fluid.box-style
-    .box-title.art-title
-      p.text-center #{article.title}
-    .discrible
-      span
-        i.fa.fa-user
-        a.author.h5(href='/user/#{article.author.name}') #{article.author.name}
-
-      span.pv.pull-right
-        i.fa.fa-eye
-        span #{article.pv}
-      span.post-time.pull-right
-        i.fa.fa-clock-o
-        | #{article.time.full}
-    .box-body
-      .article-content !{article.content}
-    .box-foot.row
-      .archive.col-sm-3
-        i.fa.fa-folder
-        span #{article.category}
-      .tag.col-sm-9
-        i.fa.fa-tags
-        span tags
-      //.col-sm-1
-      //  i.fa.fa-eye
-      //  span #{article.pv}
-    nav
-      ul.pager
-        if predoc
-          li.previous
-            a(href='/article/#{predoc._id}')
-              span.fa.fa-chevron-left(aria-hidden="true")
-              | &nbsp; Previous
-        if nextdoc
-          li.next
-            a(href='/article/#{nextdoc._id}') Next &nbsp;
-              span.fa.fa-chevron-right(aria-hidden="true")
+  include include/article-detail
   include include/comment
 block sidebar
   include include/sidebar
