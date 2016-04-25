@@ -21,6 +21,10 @@ var userSchema = new Schema({
     type: String,
     default: '/images/logo-default.png'
   },
+  about:  {
+    type: String,
+    default: '未填写'
+  },
   url:  {
     type: String,
     default: '未填写'

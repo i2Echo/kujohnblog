@@ -25,4 +25,8 @@
       .form-group
         label(for='location') Location
         input.form-control#location(type='text',value='#{location = user.location ? user.location : ""}',name="location")
+      .form-group
+        label(for='about') About me
+        textarea.form-control#about(cols="3",placeholder='#{about = user.about ? user.about : ""}',name="about")
+        //input.form-control#about(type='text',value='#{about = user.about ? user.about : ""}',name="about")
       button.btn.btn-success(type='submit') Update profile

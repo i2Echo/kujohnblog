@@ -56,6 +56,7 @@ var setProfile_post = function (req, res){
     name: req.body.name || req.session.user.name,
     email: req.body.email || req.session.user.email,
     profilePic: (req.files.profilePic ? '/upload/'+req.files.profilePic.name : req.session.user.profilePic),
+    about: req.body.about || req.session.user.about,
     url: req.body.url || req.session.user.url,
     location: req.body.location || req.session.user.location
   }

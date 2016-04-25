@@ -2,25 +2,24 @@ extends include/iframeProfile
 
 
 block content
-  .archives.box-style
-    //- var articless = [{'time':{'year':'2016','month':'7','day':'11'}},{'time':{'year':'2016','month':'11','day':'11'}},{'time':{'year':'2016','month':'11','day':'12'}}]
+  .archives.box-style.mt20
     - var lastYear = 0,lastMonth=0
     for article,i in articles
       - var isNew = false
-      if lastMonth != article.time.month || lastYear != article.time.year
+      if lastMonth != article.time_month || lastYear != article.time_year
         - isNew = true
       .archive-view.container-fluid.clearfix(class="#{isNew ? 'bd-top':''}")
         .archive-year.pull-left
-          if lastMonth != article.time.month || lastYear != article.time.year
-            a(href='#') #{article.time.year + '-' + article.time.month}
-          - lastYear = article.time.year
-          - lastMonth = article.time.month
+          if lastMonth != article.time_month || lastYear != article.time_year
+            a(href='#') #{article.time_year + '-' + article.time_month}
+          - lastYear = article.time_year
+          - lastMonth = article.time_month
         .archive-list.clearfix(class="#{(!isNew) ? 'bd-top':''}")
           .archive-title.pull-left
             a #{article.title}
           .archive-mate.pull-right
             i.fa.fa-calendar.m0-5
-            span #{article.time.month + '-' + article.time.day}
+            span #{article.time_month + '-' + article.time_day}
 
 block sidebar
   .panel.panel-default.side-panel
@@ -29,10 +28,10 @@ block sidebar
     .list-group.set-item
       - var lastYear = 0,lastMonth=0
       for article in articles
-          if lastMonth != article.time.month || lastYear != article.time.year
+          if lastMonth != article.time_month || lastYear != article.time_year
 
             a.list-group-item.archive-left-list(href='#')
               i.fa.fa-calendar.m0-5
-              | #{article.time.year + '-' + article.time.month}
-            - lastYear = article.time.year
-            - lastMonth = article.time.month
+              | #{article.time_year + '-' + article.time_month}
+            - lastYear = article.time_year
+            - lastMonth = article.time_month

@@ -9,7 +9,7 @@ each article in articles
         a.author.h5(href='/user/#{article.author.name}') #{article.author.name}
       span.post-time.pull-right
         i.fa.fa-clock-o
-        | #{article.time.full}
+        | #{article.time}
     .box-body
 
       .article-list !{article.content}
@@ -18,7 +18,7 @@ each article in articles
       .pull-right
         span.cmt
           i.fa.fa-comments
-          span 2
+          span #{article.commentCount}
         span.pv
           i.fa.fa-eye
           span #{article.pv}

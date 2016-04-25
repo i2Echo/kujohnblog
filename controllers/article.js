@@ -48,7 +48,6 @@ var getOneArticle = function (req, res){
       midFunction.getPre(doc._id,function(err,predocs){
         midFunction.getNext(doc._id,function(err,nextdocs){
           comment.getComment({to: id},function(err, count, comments){
-            console.log(doc.time.year);
             req.session.art_id = doc._id;
             res.render('article', {
               title: req.params.title,

@@ -1,7 +1,11 @@
 extends include/iframeCom
 
 block content
-  p 共找到#{count}条结果
+  p 共找到
+    b.cred.m0-5 #{count}
+    | 条与
+    b.cred.m0-5 #{keyword}
+    | 相关的结果
   each article in articles
     .content-box.container-fluid.box-style
       .box-title.list-title
@@ -13,7 +17,7 @@ block content
           a.author.h5(href='/user/#{article.author.name}') #{article.author.name}
         span.post-time.pull-right
           i.fa.fa-clock-o
-          | #{article.time.full}
+          | #{article.time}
       .box-body
 
         .article-list !{article.content}

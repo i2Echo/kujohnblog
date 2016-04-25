@@ -37,7 +37,6 @@ var getComment = function (condition, callback){
 };
 
 
-
 module.exports = {
   saveCommentPost: saveCommentPost,
   getComment: getComment

@@ -6,13 +6,13 @@ body {
   padding-top: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-.bd-top{
-  border-top:1px solid #eee;}
+.bd-top{border-top:1px solid #eee;}
 .m0-5{margin: 0 5px;}
 .max-w300{ max-width: 300px;}
 .m15-a{ margin: 15px auto;}
 .p15{padding: 15px;}
 .mt20{margin-top: 20px;}
+.cred{color: red;}
 a {color: #4078c0;}
 /*table style*/
 table{border-bottom:1px solid #f3f3f3;}
@@ -50,18 +50,16 @@ table{border-bottom:1px solid #f3f3f3;}
 .upload-picture p{
   margin-left: 10px;
 }
-.upload-picture{
-  margin-left: 80px;
-}
+.upload-picture{ margin-left: 80px;}
 /*.set-item a.list-group-item{*/
   /*color: #4078c0;*/
 /*}*/
+.profile-form textarea,
 .profile-form input{
   max-width: 500px;
 }
-.md-btn{
-  margin: 5px auto;
-}
+.profile-info{word-break: break-all;}
+/*.md-btn{margin: 5px auto;}*/
 .hove-style:hover{
   color: #d45658;
   text-decoration: none;
@@ -414,6 +412,9 @@ div.page-sidebar {
 .archives .archive-list .archive-title{
   line-height: 30px;
   font-size: 18px;
+}
+.archives .archive-list .archive-mate{
+  margin-top: 4px;
 }
 .archives .archive-year{
   font-size: 24px;
