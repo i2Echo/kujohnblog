@@ -8,7 +8,7 @@ git clone https://github.com/i2Echo/kujohnblog.git
 
 ### Usage
 ```
-cd kuyjohnblog && npm install
+cd kujohnblog && npm install
 ```
 
 ### Run
