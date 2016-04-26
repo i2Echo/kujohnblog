@@ -1,7 +1,5 @@
 # Blog
-mongodb+express+bootstrap+node
-
-##Started
+By mongodb+express+bootstrap+node
 
 ###Installed
 ```
