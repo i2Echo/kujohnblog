@@ -117,6 +117,7 @@ var searchArticle = function(req, res){
     res.render('search', {
       title: 'search',
       articles: docs,
+      keyword: req.query.search,
       user: req.session.user,
       count: docs.length,
       success : req.flash('success').toString(),

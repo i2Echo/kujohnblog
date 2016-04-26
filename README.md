@@ -8,7 +8,7 @@ mongodb+express+bootstrap+node
 git clone https://github.com/i2Echo/kujohnblog.git
 ```
 
-###Usege
+### Usage
 ```
 cd kuyjohnblog && npm install
 ```

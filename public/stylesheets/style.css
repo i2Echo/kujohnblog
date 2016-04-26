@@ -6,14 +6,44 @@ body {
   padding-top: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+@media (min-width: 768px )and (max-width:775px){
+  .main .row{margin-right: -5px;}
+}
+@media (min-width: 768px){
+  #box-left{
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px){
+  .navbar-form.head-search{
+    margin: 8px;
+    padding: 0;
+    border: none;
+  }
+  .footer .navbar-nav li{
+    line-height: 30px;
+  }
+  .footer .navbar-nav li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+  }
+  .footer .navbar-nav{
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+/*glob css style*/
 .bd-top{border-top:1px solid #eee;}
 .m0-5{margin: 0 5px;}
 .max-w300{ max-width: 300px;}
 .m15-a{ margin: 15px auto;}
 .p15{padding: 15px;}
 .mt20{margin-top: 20px;}
+.ml-50{margin-left: 50px;}
 .cred{color: red;}
 a {color: #4078c0;}
+.text-brekall{word-break: break-all;}
 /*table style*/
 table{border-bottom:1px solid #f3f3f3;}
 .table>thead>tr.item>th {
@@ -24,10 +54,6 @@ table{border-bottom:1px solid #f3f3f3;}
 .table-hover>tbody>tr:hover {
   background-color: #f5f5f5;
 }
-@media (min-width: 768px )and (max-width:775px){
-  .main .row{margin-right: -5px;}
-}
-
 /*alert*/
 #alertMessage{
   margin-bottom: 0;
@@ -68,9 +94,15 @@ table{border-bottom:1px solid #f3f3f3;}
   min-width: 70px;
   height: 50px;
   color: #fff;
-  line-height: 50px;
   margin-left: 5px;
 }
+.head-mate .notlogin{
+  width: 50px;
+  /*height: 50px;*/
+  float: left;
+  line-height: 48px;
+}
+
 a#logo-img{
   padding: 5px 10px;
 }
@@ -141,11 +173,6 @@ form.modal-body{
 .main{
   padding-top: 20px;
 }
-@media (min-width: 768px){
-  #box-left{
-    padding-right: 30px;
-  }
-}
 
 div.blog-main{
   padding: 0;
@@ -170,20 +197,6 @@ div.blog-main{
   line-height: 100px;
 }
 
-@media (max-width: 767px){
-  .footer .navbar-nav li{
-    line-height: 30px;
-  }
-  .footer .navbar-nav li > a {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: block;
-  }
-  .footer .navbar-nav{
-    padding-top: 25px;
-    padding-bottom: 25px;
-  }
-}
 .footer .navbar-nav{
   float: none;
   margin: 0 auto;

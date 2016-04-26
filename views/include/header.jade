@@ -6,14 +6,19 @@ header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      .head-mate
+      .head-mate.clearfix
         if user
           a.navbar-brand#logo-img(href='/user/#{user.name}',title="#{user.name}", data-container="body", data-toggle="popover", data-trigger="hover", data-placement="bottom", data-content="点击进入个人中心")
             img.img-circle(width='40', height='40', src='#{user.profilePic}')
         else
-          p 未登录
-
+          .notlogin 未登录
     .collapse.navbar-collapse#bs-navbar
+      form.navbar-form.head-search.navbar-left(role="search", action="/search", method='get')
+        .input-group
+          input.form-control(type="text", name="search", placeholder="Search")
+          span.input-group-btn
+            button.btn.btn-flat.search-btn(type="submit")
+              i.fa.fa-search
       ul.nav.navbar-nav.text-center
         li(class="#{title=='Home'?'active':''}")
           a(href='/') Home
@@ -21,12 +26,6 @@ header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
           a(href='/archives') Archives
         li(class="#{title=='About'?'active':''}")
           a(href='/about') About
-      form.navbar-form.navbar-left(role="search", action="/search", method='get')
-        .input-group
-          input.form-control(type="text", name="search", placeholder="Search")
-          span.input-group-btn
-            button.btn.btn-flat.search-btn(type="submit")
-              i.fa.fa-search
       .nav.navbar-nav.navbar-right.text-center#user
         if !user
           button.btn.btn-default.navbar-btn#login-btn(type='button',data-toggle='modal',data-target='#login') Sign in
