@@ -66,7 +66,7 @@ table{border-bottom:1px solid #f3f3f3;}
   left: 0;
   top: 0;
   min-height: 39px;
-  max-width: 158px;
+  max-width: 158px!important;
   opacity: 0.0001;
   cursor: pointer;
 }
