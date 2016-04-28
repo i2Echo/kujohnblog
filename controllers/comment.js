@@ -1,4 +1,5 @@
 var Comment = require('../models/comment.js');
+var Article = require('../models/article.js');
 
 var saveCommentPost = function (req, res) {
   if(!req.body.info){
@@ -14,12 +15,16 @@ var saveCommentPost = function (req, res) {
       });
 
   comment.save(function (err) {
-    if (err) {
-      req.flash('error', err);
-      return res.redirect('back');
-    }
-    req.flash('success', 'Comment success!');
-    res.redirect('back');
+    Article.findByIdAndUpdate({_id: currentArticle}, { $inc: { commentCount: 1 }}).exec(function(err){
+      if (err) {
+        req.flash('error', err);
+        return res.redirect('back');
+      }
+      console.log(currentArticle);
+      req.flash('success', 'Comment success!');
+      res.redirect('back');
+    });
+
   });
 };
 

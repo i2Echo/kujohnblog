@@ -11,13 +11,17 @@ var moment = require('moment');
 var getTime = function(){return moment().format('YYYY-MM-DD HH:mm:ss');};
 
 var articleSchema = new Schema({
-   author: {
-     type: ObjectId,
-     ref: 'User'
-   },
+  author: {
+   type: ObjectId,
+   ref: 'User'
+  },
   title: String,
   category: String,
   content: String,
+  commentCount:{
+    type: Number,
+    default: 0
+  },
   pv: {
     type: Number,
     default: 0
