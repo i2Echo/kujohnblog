@@ -1,5 +1,6 @@
 var Article = require('../models/article.js');
 var User = require('../models/user.js');
+var Comment = require('../models/comment.js');
 var midFunction = require('./midFunction.js');
 var comment = require('./comment.js');
 
@@ -98,14 +99,16 @@ var getArticleManage = function(req, res){
   });
 };
 var delArticle = function(req, res){
-  Article.findOneAndRemove({_id: req.params.art_id}).exec(function(err, callback){
-    if (err) {
-      req.flash('error', err);
+  Article.findOneAndRemove({_id: req.params.art_id},function(){
+    Comment.remove({to: req.params.art_id}).exec(function(err){
+      if (err) {
+        req.flash('error', err);
+        return res.redirect('back');
+      }
+      req.flash('success', '文章删除成功');
       return res.redirect('back');
-    }
-    req.flash('success', '文章删除成功');
-    return res.redirect('back');
-  });
+    });
+  })
 }
 var searchArticle = function(req, res){
   var query = new RegExp(req.query.search, 'i');
