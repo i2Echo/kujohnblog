@@ -11,7 +11,7 @@ header.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
           a.navbar-brand#logo-img(href='/user/#{user.name}',title="#{user.name}", data-container="body", data-toggle="popover", data-trigger="hover", data-placement="bottom", data-content="点击进入个人中心")
             img.img-circle(width='40', height='40', src='#{user.profilePic}')
         else
-          .notlogin 未登录
+          a.navbar-brand(href='/signin') 未登录
     .collapse.navbar-collapse#bs-navbar
       form.navbar-form.head-search.navbar-left(role="search", action="/search", method='get')
         .input-group
