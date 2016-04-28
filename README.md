@@ -1,17 +1,17 @@
 # Blog
-mongodb+express+bootstrap+node
+By mongodb+express+bootstrap+node
 
-###Installed
+###Installation
 ```
-git clone https://github.com/i2Echo/kujohnblog.git
+$ git clone https://github.com/i2Echo/kujohnblog.git
 ```
 
 ### Usage
 ```
-cd kujohnblog && npm install
+$ cd kujohnblog && npm install
 ```
 
 ### Run
 ```
-node app
+$ node app
 ```
