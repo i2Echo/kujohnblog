@@ -17,12 +17,7 @@ html
 
   body
     .wallpaper
-      include include/modalSignWindow
-      include include/header
-      .main.container-fluid
-        .container
-          block iframe
-      include include/footer
+      block wrapper
     #totop(style="opacity: 1; display: block;")
       a(title="返回顶部")
         img(src='/images/scrollup.png')
