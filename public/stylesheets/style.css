@@ -44,7 +44,7 @@ html,body{height: 100%;}
 .ml-50{margin-left: 50px;}
 .cred{color: red;}
 a {color: #4078c0;}
-.text-brekall{word-break: break-all;}
+.text-breakall{word-break: break-all;}
 /*table style*/
 table{border-bottom:1px solid #f3f3f3;}
 .table>thead>tr.item>th {
@@ -161,9 +161,8 @@ form.modal-body{
 }
 
 .wallpaper{
-  /*width: 100%;*/
   min-height: 100%;
-  background-color: #e9e9e9;
+  background-color: #f5f5f5;
   position: relative;
 }
 .main{
@@ -231,16 +230,15 @@ div.blog-main{
 }
 .box-style{
   background-color: #fff;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
-  box-shadow: 0 1px 2px rgba(0,0,0,.1);
-  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16);
+  border-radius: 3px;
 }
 .box-style:hover{
-  -webkit-box-shadow: 0 0 2px 3px rgba(0,0,0,.1);
-  -moz-box-shadow: 0 0 2px 3px rgba(0,0,0,.1);
-  box-shadow: 0 0 2px 3px rgba(0,0,0,.1);
-  /*border-radius: 2px;*/
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 }
 
 .box-title{
@@ -276,8 +274,8 @@ div.blog-main{
   color: #747474;
 }
 .box-body{
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
   padding: 10px 0;
 }
 .box-body .article-list{
@@ -320,7 +318,7 @@ nav ul.pager{
   max-width: 300px;
 }
 .write-article .article-title{
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 /*sidebar*/
@@ -349,13 +347,13 @@ div.page-sidebar {
 .page-sidebar .side-box{
   background-color: #fff;
   margin: 20px auto;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #eee;
 }
 .side-box .side-box-body{
   margin: 15px auto;
 }
 .side-box ul.side-box-body li{
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
   line-height: 30px;
   /*font-size: 16px;*/
   padding-left: 15px;
@@ -370,7 +368,10 @@ div.page-sidebar {
 }
 #profile-box .profile-box-title{
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
 }
 #profile-box .user-btn a{
   margin: 10px 5px;
@@ -401,7 +402,7 @@ div.page-sidebar {
 .comment .write-comment{
   margin: 20px 0 0;
   padding: 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 
 }
 .comment .comment-list {
