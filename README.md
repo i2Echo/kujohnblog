@@ -1,7 +1,7 @@
 # Blog
 By mongodb+express+bootstrap+node
 
-###Installation
+### Installation
 ```
 $ git clone https://github.com/i2Echo/kujohnblog.git
 ```
